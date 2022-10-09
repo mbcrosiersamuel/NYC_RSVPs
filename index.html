@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overlock">
+
+<head>
+  <!--- <script src="/index.js"></script> -->
+  <title> NYC Reservation Timing Guide </title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <header>
+    NYC Restaurant Reservation Timing Guide
+  </header>
+  <nav>
+    <a href="reviews/index.html">My Reviews</a>
+    <a href="index.html">Home</a>
+  </nav>
+  <div class="date_calc"> 
+    <span id="date_help">Date help:</span>
+    <ul>
+    <li>14 days from today is <span id="fourteen_days"></span>.</li>
+    <li>30 days from today is <span id="thirty_days"></span>.</li>
+  </ul>
+  </div>
+  <script>
+    date = new Date();
+    var thirtyDays = new Date(date);
+    thirtyDays.setDate(thirtyDays.getDate() + 30);
+    var fourteenDays = new Date(date);
+    fourteenDays.setDate(fourteenDays.getDate() + 14);
+
+    document.getElementById("thirty_days").innerHTML = thirtyDays.toDateString();
+    document.getElementById("fourteen_days").innerHTML = fourteenDays.toDateString();
+  </script>
+  <article>
+    <table id="myTable">
+      <tr class="header">
+        <th style="width:20%;">Restaurant</th>
+        <th style="width:20%;">Neighborhood</th>
+        <th style="width:15%;">Cuisine</th>
+        <th style="width:10%;">Platform</th>
+        <th style="width:35%;">Reservation Details</th>
+      </tr>
+      <tr>
+        <td><a href="https://viacarota.com">Via Carota</a></td>
+        <td>West Village</td>
+        <td>Italian</td>
+        <td><a href="https://resy.com/cities/ny/via-carota">Resy</a></td>
+        <td>30 days in advance at 10 am</td>
+      </tr>
+      <tr>
+        <td><a href="https://fourhorsemenbk.com">The Four Horsemen</a></td>
+        <td>Williamsburg</td>
+        <td>Wine Bar</td>
+        <td><a href="https://resy.com/cities/ny/the-four-horsemen">Resy</a></td>
+        <td>30 days in advance at 7 am</td>
+      </tr>
+      <tr>
+        <td><a href="https://carbonenewyork.com">Carbone</a></td>
+        <td>Greenwich Village</td>
+        <td>Italian</td>
+        <td><a href="https://resy.com/cities/ny/carbone">Resy</a></td>
+        <td>30 days in advance at 10 am</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.lilianewyork.com">Lilia</a></td>
+        <td>Williamsburg</td>
+        <td>Italian</td>
+        <td><a href="https://resy.com/cities/ny/lilia">Resy</a></td>
+        <td>30 days in advance at 10 am</td>
+      </tr>
+      <tr>
+        <td><a href="https://resy.com/cities/ny/lartusi-ny">L'Artusi</a></td>
+        <td>West Village</td>
+        <td>Italian</td>
+        <td><a href="https://resy.com/cities/ny/lilia">Resy</a></td>
+        <td>14 days in advance at 9 am</td>
+      </tr>
+    </table>
+  </article>
+</body>
+
+
+</html>

@@ -1,0 +1,142 @@
+@media screen and (max-width: 430px) {
+    body {
+      grid-template-columns: auto;
+      grid-template-rows: minmax(40px, auto) minmax(30px, auto) auto auto;
+      grid-template-areas:
+      "header"
+      "nav"
+      "ct"
+      "date_calc"
+    }
+    header, nav {
+      text-align: center;
+      justify-self: center;
+    }
+    nav a {
+      margin: 0 10px;
+    }
+  }
+
+
+
+body {
+    margin: 0 auto;
+    max-width: 1000px;
+    min-width: 0;
+    padding: 0 10px 25px;
+    font-family: "Helvetica", "Arial", sans-serif;
+    color: #444;
+    display: grid;
+    row-gap: 5px;
+    grid-template-columns: auto auto;
+    grid-template-rows: 60px auto;
+    grid-template-areas:
+        "header nav"
+        "ct ct"
+        "date_calc date_calc"
+  }
+
+
+  h1, h2, strong {
+    color: #222;
+  }
+  header {
+    margin: 0px;
+    font-size: 23px;
+    grid-area: header;
+    justify-self: left;
+    align-self: end;
+  }
+  article {
+    font-size: 16px;
+    grid-area: ct;
+    border-top: 2px solid gray;
+  }
+  nav {
+    font-size: 18px;
+    letter-spacing: 1px;
+    grid-area: nav;
+    justify-self: right;
+    align-self: end;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+  h1 {
+    font-size: 26px;
+  }
+  nav a {
+    margin-left: 20px;
+    text-align: right;
+  }
+  a {
+    color: #ffa64d;
+  }
+
+  a:visited{
+    color: #c05d0d;
+  }
+
+  a:hover{
+    text-decoration: none;
+  }
+
+
+  .date_calc {
+    padding: 5px 0px;
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+    background-color: #ffead5;
+    border: 1px solid;
+    border-color: #ffa64d;
+    width: 100%; /* Full-width */
+    grid-area: date_calc;
+    color: #444;
+    margin: 10px auto;
+
+  }
+
+  #date_help{
+    padding: 5px 10px;
+    font-weight: bold;
+  }
+
+  ul{
+    margin: 2px;
+  }
+
+  li{
+    display:inline;
+  }
+
+
+  #myTable {
+    margin: 20px 0px 0px 0px;
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-family: Arial, sans-serif;
+    font-size: 14px; /* Increase font-size */
+  }
+  
+  #myTable th, #myTable td {
+    text-align: left; /* Left-align text */
+    padding: 12px; /* Add padding */
+  }
+  
+  #myTable tr {
+    /* Add a bottom border to all table rows */
+    border-bottom: 1px solid #ddd;
+  }
+
+  #myTable tr.header{
+    font-size: 16px;
+  }
+  
+  #myTable tr.header, #myTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
+  }
+
+  
