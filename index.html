@@ -24,6 +24,7 @@
     <span id="date_help">Date help:</span>
     <ul>
     <li>14 days from today is <span id="fourteen_days"></span>.</li>
+    <li>21 days from today is <span id="twentyone_days"></span>.</li>
     <li>30 days from today is <span id="thirty_days"></span>.</li>
   </ul>
   </div>
@@ -33,9 +34,12 @@
     thirtyDays.setDate(thirtyDays.getDate() + 30);
     var fourteenDays = new Date(date);
     fourteenDays.setDate(fourteenDays.getDate() + 14);
+    var twentyoneDays = new Date(date);
+    twentyoneDays.setDate(twentyoneDays.getDate() + 21);
 
     document.getElementById("thirty_days").innerHTML = thirtyDays.toDateString();
     document.getElementById("fourteen_days").innerHTML = fourteenDays.toDateString();
+    document.getElementById("twentyone_days").innerHTML = twentyoneDays.toDateString();
   </script>
   <article>
     <table id="myTable">
@@ -86,7 +90,21 @@
         <td>Hudson Yards</td>
         <td>Mediterranean</td>
         <td><a href="https://opentable.com/restaurant/profile/1197907">OpenTable</a></td>
-        <td>3 weeks in advance at 9 am</td>
+        <td>21 days in advance at 9 am</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.laserwolfbrooklyn.com/">Laser Wolf</a></td>
+        <td>Williamsburg</td>
+        <td>Israeli</td>
+        <td><a href="https://resy.com/cities/ny/laser-wolf-brooklyn">Resy</a></td>
+        <td>21 days in advance at 10 am</td>
+      </tr>
+      <tr>
+        <td><a href="https://www.semma.nyc">Semma</a></td>
+        <td>Greenwich Village</td>
+        <td>South Indian</td>
+        <td><a href="https://resy.com/cities/ny/semma">Resy</a></td>
+        <td>28 days in advance at ??</td>
       </tr>
     </table>
   </article>
