@@ -132,11 +132,11 @@ body {
     border-bottom: 1px solid #ddd;
   }
 
-  #myTable tr.header{
+  #myTable thead{
     font-size: 16px;
   }
   
-  #myTable tr.header, #myTable tr:hover {
+  #myTable thead, #myTable tr:hover {
     /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
   }

@@ -3,9 +3,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overlock">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  </script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
 
 <head>
-  <!--- <script src="/index.js"></script> -->
+  <script src="/index.js"></script>
   <title> NYC Reservation Timing Guide </title>
   <link rel="stylesheet" href="style.css">
 
@@ -17,8 +21,7 @@
     NYC Restaurant Reservation Timing Guide
   </header>
   <nav>
-    <a href="reviews/index.html">My Reviews</a>
-    <a href="index.html">Home</a>
+    <a href="reviews/index.html">About this Site</a>
   </nav>
   <div class="date_calc"> 
     <span id="date_help">Date help:</span>
@@ -42,72 +45,78 @@
     document.getElementById("twentyone_days").innerHTML = twentyoneDays.toDateString();
   </script>
   <article>
-    <table id="myTable">
-      <tr class="header">
-        <th style="width:20%;">Restaurant</th>
-        <th style="width:20%;">Neighborhood</th>
-        <th style="width:15%;">Cuisine</th>
-        <th style="width:10%;">Platform</th>
-        <th style="width:35%;">Reservation Details</th>
-      </tr>
+    <table id="rsvp_table" class="display">
+      <thead>
+        <tr>
+          <th style="width:20%;">Restaurant</th>
+          <th style="width:20%;">Neighborhood</th>
+          <th style="width:15%;">Cuisine</th>
+          <th style="width:10%;">Platform</th>
+          <th style="width:35%;">Reservation Details</th>
+        </tr>
+      </thead>
+      <tbody>
       <tr>
-        <td><a href="https://viacarota.com">Via Carota</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://viacarota.com">Via Carota</a></td>
         <td>West Village</td>
         <td>Italian</td>
-        <td><a href="https://resy.com/cities/ny/via-carota">Resy</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/via-carota">Resy</a></td>
         <td>30 days in advance at 10 am</td>
       </tr>
       <tr>
-        <td><a href="https://fourhorsemenbk.com">The Four Horsemen</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://fourhorsemenbk.com">The Four Horsemen</a></td>
         <td>Williamsburg</td>
         <td>Wine Bar</td>
-        <td><a href="https://resy.com/cities/ny/the-four-horsemen">Resy</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/the-four-horsemen">Resy</a></td>
         <td>30 days in advance at 7 am</td>
       </tr>
       <tr>
-        <td><a href="https://carbonenewyork.com">Carbone</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://carbonenewyork.com">Carbone</a></td>
         <td>Greenwich Village</td>
         <td>Italian</td>
-        <td><a href="https://resy.com/cities/ny/carbone">Resy</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/carbone">Resy</a></td>
         <td>30 days in advance at 10 am</td>
       </tr>
       <tr>
-        <td><a href="https://www.lilianewyork.com">Lilia</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://www.lilianewyork.com">Lilia</a></td>
         <td>Williamsburg</td>
         <td>Italian</td>
-        <td><a href="https://resy.com/cities/ny/lilia">Resy</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/lilia">Resy</a></td>
         <td>30 days in advance at 10 am</td>
       </tr>
       <tr>
-        <td><a href="https://www.lartusi.com">L'Artusi</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://www.lartusi.com">L'Artusi</a></td>
         <td>West Village</td>
         <td>Italian</td>
-        <td><a href="https://resy.com/cities/ny/lartusi-ny">Resy</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/lartusi-ny">Resy</a></td>
         <td>14 days in advance at 9 am</td>
       </tr>
       <tr>
-        <td><a href="https://www.zouzousnyc.com">Zou Zou's</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://www.zouzousnyc.com">Zou Zou's</a></td>
         <td>Hudson Yards</td>
         <td>Mediterranean</td>
-        <td><a href="https://opentable.com/restaurant/profile/1197907">OpenTable</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://opentable.com/restaurant/profile/1197907">OpenTable</a></td>
         <td>21 days in advance at 9 am</td>
       </tr>
       <tr>
-        <td><a href="https://www.laserwolfbrooklyn.com/">Laser Wolf</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://www.laserwolfbrooklyn.com/">Laser Wolf</a></td>
         <td>Williamsburg</td>
         <td>Israeli</td>
-        <td><a href="https://resy.com/cities/ny/laser-wolf-brooklyn">Resy</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/laser-wolf-brooklyn">Resy</a></td>
         <td>21 days in advance at 10 am</td>
       </tr>
       <tr>
-        <td><a href="https://www.semma.nyc">Semma</a></td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://www.semma.nyc">Semma</a></td>
         <td>Greenwich Village</td>
         <td>South Indian</td>
-        <td><a href="https://resy.com/cities/ny/semma">Resy</a></td>
-        <td>28 days in advance at ??</td>
+        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/semma">Resy</a></td>
+        <td>29 (?) days in advance at ??</td>
       </tr>
+      </tbody>
     </table>
   </article>
+
+  
 </body>
 
 
