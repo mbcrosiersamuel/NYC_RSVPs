@@ -3,119 +3,105 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overlock">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  </script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
-
 
 <head>
   <script src="/index.js"></script>
+  <link href="https://unpkg.com/tabulator-tables@5.4.4/dist/css/tabulator.min.css" rel="stylesheet">
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.4.4/dist/js/tabulator.min.js"></script>
+
   <title> NYC Reservation Timing Guide </title>
   <link rel="stylesheet" href="style.css">
 
 </head>
-
+<header>
+  NYC Restaurant Reservation Timing Guide
+</header>
 <body>
+  <div id="restaurant-data"></div>
+          
+   <script src="https://cdn.jsdelivr.net/npm/luxon/build/global/luxon.min.js"></script>
+          
+    <script type="text/javascript" src="/js/tabulator/5.4/tabulator.min.js"></script>
+    <script type="text/javascript">
 
-  <header>
-    NYC Restaurant Reservation Timing Guide
-  </header>
-  <nav>
-    <a href="reviews/index.html">About this Site</a>
-  </nav>
-  <div class="date_calc"> 
-    <span id="date_help">Date help:</span>
-    <ul>
-    <li>14 days from today is <span id="fourteen_days"></span>.</li>
-    <li>21 days from today is <span id="twentyone_days"></span>.</li>
-    <li>30 days from today is <span id="thirty_days"></span>.</li>
-  </ul>
-  </div>
-  <script>
+    var tabledata = [
+    {id:1, name:"Via Carota", restaurant_url:"https://viacarota.com", area:"West Village", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/via-carota", available_at:"30 days in advance at 10 AM", days:"30", time:"10:00 AM"  },
+{id:2, name:"The Four Horsemen", restaurant_url:"https://fourhorsemenbk.com", area:"Williamsburg", cuisine:"Wine Bar", platform:"Resy", platform_url:"https://resy.com/cities/ny/the-four-horsemen", available_at:"30 days in advance at 7 AM", days:"30", time:"07:00 AM"  },
+{id:3, name:"Carbone", restaurant_url:"https://carbonenewyork.com", area:"Greenwich Village", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/carbone", available_at:"30 days in advance at 10 AM", days:"30", time:"10:00 AM"  },
+{id:4, name:"Lilia", restaurant_url:"https://www.lilianewyork.com", area:"Williamsburg", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/lilia", available_at:"30 days in advance at 10 AM", days:"30", time:"10:00 AM"  },
+{id:5, name:"L'Artusi", restaurant_url:"https://www.lartusi.com", area:"West Village", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/lartusi-ny", available_at:"14 days in advance at 9 AM", days:"14", time:"09:00 AM"  },
+{id:6, name:"Zou Zou's", restaurant_url:"https://www.zouzousnyc.com", area:"Hudson Yards", cuisine:"Mediterranean", platform:"Open Table", platform_url:"https://opentable.com/restaurant/profile/1197907", available_at:"21 days in advance at 9 AM", days:"21", time:"09:00 AM"  },
+{id:7, name:"Laser Wolf", restaurant_url:"https://www.laserwolfbrooklyn.com/", area:"Williamsburg", cuisine:"Israeli", platform:"Resy", platform_url:"https://resy.com/cities/ny/laser-wolf-brooklyn", available_at:"21 days in advance at 10 AM", days:"21", time:"10:00 AM"  },
+{id:8, name:"Semma", restaurant_url:"https://www.semma.nyc", area:"Greenwich Village", cuisine:"South Indian", platform:"Resy", platform_url:"https://resy.com/cities/ny/semma", available_at:"29 days in advance at 12 AM", days:"29", time:"12:00 AM"  },
+{id:9, name:"Au Cheval", restaurant_url:"https://auchevalnyc.com/", area:"Tribeca", cuisine:"American", platform:"Resy", platform_url:"https://resy.com/cities/ny/au-cheval-nyc", available_at:"14 days in advance at 9 AM", days:"14", time:"09:00 AM"  },
+{id:10, name:"4 Charles Prime Rib", restaurant_url:"https://nycprimerib.com/", area:"West Village", cuisine:"Steakhouse", platform:"Resy", platform_url:"https://resy.com/cities/ny/4-charles-prime-rib", available_at:"21 days in advance at 9 AM", days:"21", time:"09:00 AM"  },
+{id:11, name:"Buvette", restaurant_url:"https://ilovebuvette.com/", area:"West Village", cuisine:"French", platform:"Resy", platform_url:"https://resy.com/cities/ny/buvette-nyc", available_at:"14 days in advance at 9 AM", days:"14", time:"09:00 AM"  },
+{id:12, name:"Sadelle's", restaurant_url:"https://www.sadelles.com/", area:"Soho", cuisine:"Brunch", platform:"Resy", platform_url:"https://resy.com/cities/ny/sadelles?date=2023-02-01&seats=2", available_at:"30 days in advance at 10 AM", days:"30", time:"10:00 AM"  },
+{id:13, name:"Gramercy Tavern", restaurant_url:"https://www.gramercytavern.com/", area:"Gramercy Park", cuisine:"American", platform:"Resy", platform_url:"https://resy.com/cities/ny/gramercy-tavern", available_at:"28 days in advance at 12 PM", days:"28", time:"12:00 PM"  },
+{id:14, name:"I Sodi", restaurant_url:"https://www.isodinyc.com/", area:"West Village", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/i-sodi", available_at:"14 days in advance at 12 AM", days:"14", time:"12:00 AM"  },
+{id:15, name:"Shuka", restaurant_url:"https://www.shukanewyork.com/", area:"Soho", cuisine:"Mediterranean", platform:"Resy", platform_url:"https://resy.com/cities/ny/shuka", available_at:"30 days in advance at 12 AM", days:"30", time:"12:00 AM"  },
+{id:16, name:"Shukette", restaurant_url:"https://www.shukettenyc.com/", area:"Chelsea", cuisine:"Middle Eastern", platform:"Resy", platform_url:"https://resy.com/cities/ny/shukette", available_at:"30 days in advance at 12 AM", days:"30", time:"12:00 AM"  },
+{id:17, name:"Dhamaka", restaurant_url:"https://www.dhamaka.nyc/", area:"Lower East Side", cuisine:"Indian", platform:"Resy", platform_url:"https://resy.com/cities/ny/dhamaka", available_at:"30 days in advance at 12 AM", days:"30", time:"12:00 AM"  },
+{id:18, name:"Rubirosa", restaurant_url:"http://www.rubirosanyc.com/", area:"Nolita", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/rubirosa", available_at:"7 days in advance at 12 AM", days:"7", time:"12:00 AM"  },
+{id:19, name:"Llama San", restaurant_url:"https://www.llamasannyc.com/", area:"West Village", cuisine:"Peruvian", platform:"Resy", platform_url:"https://resy.com/cities/ny/llama-san", available_at:"28 days in advance at 12 AM", days:"28", time:"12:00 AM"  },
+{id:20, name:"Balthazar", restaurant_url:"https://balthazarny.com/", area:"Soho", cuisine:"French", platform:"Resy", platform_url:"https://resy.com/cities/ny/balthazar-nyc", available_at:"30 days in advance at 12 AM", days:"30", time:"12:00 AM"  },
+{id:21, name:"Adda", restaurant_url:"https://www.addanyc.com/", area:"Long Island City", cuisine:"Indian", platform:"Resy", platform_url:"https://resy.com/cities/ny/adda", available_at:"30 days in advance at 12 AM", days:"30", time:"12:00 AM"  },
+{id:22, name:"Masalawala & Sons", restaurant_url:"http://www.masalawala.com/", area:"Park Slope", cuisine:"Indian", platform:"Resy", platform_url:"https://resy.com/cities/ny/masalawala", available_at:"30 days in advance at 12 AM", days:"30", time:"12:00 AM"  },
+{id:23, name:"Tatiana", restaurant_url:"https://www.tatiananyc.com/", area:"Upper West Side", cuisine:"Afro-Caribbean", platform:"Resy", platform_url:"https://resy.com/cities/ny/tatiana", available_at:"28 days in advance at 12 PM", days:"28", time:"12:00 PM"  },
+{id:24, name:"Torrisi Bar & Restaurant", restaurant_url:"https://www.torrisinyc.com/", area:"Nolita", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/torrisi", available_at:"30 days in advance at 10 AM", days:"30", time:"10:00 AM"  },
+{id:25, name:"Claud", restaurant_url:"https://www.claudnyc.com/", area:"East Village", cuisine:"European", platform:"Resy", platform_url:"https://resy.com/cities/ny/claud", available_at:"14 days in advance at 12 AM", days:"14", time:"12:00 AM"  },
+{id:26, name:"Thai Diner", restaurant_url:"https://www.thaidiner.com/", area:"Nolita", cuisine:"Thai", platform:"Tock", platform_url:"https://www.exploretock.com/thaidiner", available_at:"6 days in advance at 12 AM", days:"6", time:"12:00 AM"  },
+{id:27, name:"Rezdora", restaurant_url:"https://rezdora.nyc/", area:"Flatiron", cuisine:"Pasta", platform:"Resy", platform_url:"https://resy.com/cities/ny/rezdora", available_at:"21 days in advance at 12 AM", days:"21", time:"12:00 AM"  },
+{id:28, name:"Don Angie", restaurant_url:"https://www.donangie.com/", area:"West Village", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/don-angie", available_at:"7 days in advance at 9 AM", days:"7", time:"09:00 AM"  },
+{id:29, name:"Gage & Tollner", restaurant_url:"https://www.gageandtollner.com/", area:"Brooklyn", cuisine:"American", platform:"Resy", platform_url:"https://resy.com/cities/ny/gage-and-tollner", available_at:"28 days in advance at 10 AM", days:"28", time:"10:00 AM"  },
+{id:30, name:"Ci Siamo", restaurant_url:"https://www.cisiamonyc.com/", area:"Hudson Yards", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/ci-siamo", available_at:"28 days in advance at 12 PM", days:"28", time:"12:00 PM"  },
+{id:31, name:"Cote", restaurant_url:"http://cotenyc.com/", area:"Chelsea", cuisine:"Korean", platform:"Resy", platform_url:"https://resy.com/cities/ny/cote", available_at:"30 days in advance at 10 AM", days:"30", time:"10:00 AM"  },
+{id:32, name:"Bonnie's", restaurant_url:"https://www.bonniesbrooklyn.com/", area:"Cantonese", cuisine:"Williamsburg", platform:"Resy", platform_url:"https://resy.com/cities/ny/bonnies", available_at:"13 days in advance at 10 AM", days:"13", time:"10:00 AM"  },
+    ];
+    
+    var customMutator = function(value, data, type, params, component){
+    //value - original value of the cell
+    //data - the data for the row
+    //type - the type of mutation occurring  (data|edit)
+    //params - the mutatorParams object from the column definition
+    //component - when the "type" argument is "edit", this contains the cell component for the edited cell, otherwise it is the column component for the column
     date = new Date();
-    var thirtyDays = new Date(date);
-    thirtyDays.setDate(thirtyDays.getDate() + 30);
-    var fourteenDays = new Date(date);
-    fourteenDays.setDate(fourteenDays.getDate() + 14);
-    var twentyoneDays = new Date(date);
-    twentyoneDays.setDate(twentyoneDays.getDate() + 21);
+    var new_date = new Date(date);
+    new_date.setDate(new_date.getDate() + parseInt(data.days));
 
-    document.getElementById("thirty_days").innerHTML = thirtyDays.toDateString();
-    document.getElementById("fourteen_days").innerHTML = fourteenDays.toDateString();
-    document.getElementById("twentyone_days").innerHTML = twentyoneDays.toDateString();
-  </script>
-  <article>
-    <table id="rsvp_table" class="display">
-      <thead>
-        <tr>
-          <th style="width:20%;">Restaurant</th>
-          <th style="width:20%;">Neighborhood</th>
-          <th style="width:15%;">Cuisine</th>
-          <th style="width:10%;">Platform</th>
-          <th style="width:35%;">Reservation Details</th>
-        </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://viacarota.com">Via Carota</a></td>
-        <td>West Village</td>
-        <td>Italian</td>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/via-carota">Resy</a></td>
-        <td>30 days in advance at 10 am</td>
-      </tr>
-      <tr>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://fourhorsemenbk.com">The Four Horsemen</a></td>
-        <td>Williamsburg</td>
-        <td>Wine Bar</td>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/the-four-horsemen">Resy</a></td>
-        <td>30 days in advance at 7 am</td>
-      </tr>
-      <tr>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://carbonenewyork.com">Carbone</a></td>
-        <td>Greenwich Village</td>
-        <td>Italian</td>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/carbone">Resy</a></td>
-        <td>30 days in advance at 10 am</td>
-      </tr>
-      <tr>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://www.lilianewyork.com">Lilia</a></td>
-        <td>Williamsburg</td>
-        <td>Italian</td>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/lilia">Resy</a></td>
-        <td>30 days in advance at 10 am</td>
-      </tr>
-      <tr>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://www.lartusi.com">L'Artusi</a></td>
-        <td>West Village</td>
-        <td>Italian</td>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/lartusi-ny">Resy</a></td>
-        <td>14 days in advance at 9 am</td>
-      </tr>
-      <tr>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://www.zouzousnyc.com">Zou Zou's</a></td>
-        <td>Hudson Yards</td>
-        <td>Mediterranean</td>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://opentable.com/restaurant/profile/1197907">OpenTable</a></td>
-        <td>21 days in advance at 9 am</td>
-      </tr>
-      <tr>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://www.laserwolfbrooklyn.com/">Laser Wolf</a></td>
-        <td>Williamsburg</td>
-        <td>Israeli</td>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/laser-wolf-brooklyn">Resy</a></td>
-        <td>21 days in advance at 10 am</td>
-      </tr>
-      <tr>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://www.semma.nyc">Semma</a></td>
-        <td>Greenwich Village</td>
-        <td>South Indian</td>
-        <td><a target="_blank" rel="noopener noreferrer" href="https://resy.com/cities/ny/semma">Resy</a></td>
-        <td>29 (?) days in advance at ??</td>
-      </tr>
-      </tbody>
-    </table>
-  </article>
+   return (new_date.toDateString());
 
+}
+  
+
+    var table = new Tabulator("#restaurant-data", {
+      data:tabledata, //load initial data into table
+      layout:"fitDataStretch",
+      responsiveLayout:"collapse",
+      columns:[ //Define Table Columns
+        {title:"Restaurant", field:"name", formatter:"link", sorter:"string", width:"250", formatterParams:{
+                labelField:"name",
+                urlField:"restaurant_url",
+                target:"_blank",
+            }},
+        {title:"Neighborhood", field:"area", sorter:"string", hozAlign:"left"},
+        {title:"Cuisine", field:"cuisine", sorter:"string"},
+        {title:"Platform", field:"platform", formatter:"link", sorter:"string", hozAlign:"center", formatterParams:{
+                labelField:"platform",
+                urlField:"platform_url",
+                target:"_blank",
+            }},
+        {title:"Reservation Details", field:"available_at", sorter:"string", hozAlign:"center", width:"250"},
+        {title:"Days in Advance", field:"days", sorter:"number", hozAlign:"center"},
+        {title:"Time (EST)", field:"time", sorter:"string", hozAlign:"center"},
+        {title:"Reservations Open Through:", field:"openres", sorter:"string", hozAlign:"center", mutator:customMutator},
+      ],
+    });
+  </script> 
+    <div class="date_calc"> 
+      <span id="date_help">Date help:</span>
+  
+    </div>
   
 </body>
 
