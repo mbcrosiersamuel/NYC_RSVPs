@@ -17,6 +17,14 @@
   NYC Restaurant Reservation Timing Guide
 </header>
 <body>
+  <div class="date_calc"> 
+    <span id="date_help">Reservation Guidance & Caveats</span>
+    <ul>
+      <li> Restaurants regularly change their reservation schedules, so the information above is subject to change. See something that's out of date, or have a restaurant you think we should add? <a href="https://forms.gle/5rc7JvKU533JXRR26" target="_blank">Let us know.</a></li>
+      <li> In many cases, online reservations are not the only option. Many restaurants reserve tables for walk-ins, set aside a portion of reservations for callers, or offer early access through the Amex Global Dining program (among others). Just because there aren't reservations online doesn't mean you can't go! </li>
+      <li> As of right now, the 'earliest reservation' date doesn't account for time of day, and time sorts alphabetically vs. by time. These fixes are coming soon. </li> 
+    </ul>
+  </div>
   <div id="restaurant-data"></div>
           
    <script src="https://cdn.jsdelivr.net/npm/luxon/build/global/luxon.min.js"></script>
@@ -79,7 +87,7 @@
       layout:"fitDataStretch",
       responsiveLayout:"collapse",
       columns:[ //Define Table Columns
-        {title:"Restaurant", field:"name", formatter:"link", sorter:"string", width:"250", formatterParams:{
+        {title:"Restaurant", field:"name", formatter:"link", sorter:"string", width:"200", formatterParams:{
                 labelField:"name",
                 urlField:"restaurant_url",
                 target:"_blank",
@@ -93,15 +101,12 @@
             }},
         {title:"Reservation Details", field:"available_at", sorter:"string", hozAlign:"center", width:"250"},
         {title:"Days in Advance", field:"days", sorter:"number", hozAlign:"center"},
-        {title:"Time (EST)", field:"time", sorter:"string", hozAlign:"center"},
-        {title:"Reservations Open Through:", field:"openres", sorter:"string", hozAlign:"center", mutator:customMutator},
+        {title:"Time (Eastern)", field:"time", sorter:"string", hozAlign:"center"},
+        {title:"Reservations Open Through", field:"openres", sorter:"string", hozAlign:"center", width:"300", mutator:customMutator},
       ],
     });
   </script> 
-    <div class="date_calc"> 
-      <span id="date_help">Date help:</span>
-  
-    </div>
+
   
 </body>
 

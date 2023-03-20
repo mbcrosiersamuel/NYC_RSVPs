@@ -7,7 +7,7 @@ body {
   }
   header {
     font-size: 25px;
-    padding: 0px 0px 20px 0px;
+    padding: 0px 0px 10px 0px;
   }
   body {
     padding: 20px 20px;
@@ -16,13 +16,15 @@ body {
     font-size: 16px;
     border-top: 2px solid gray;
   }
-
+  li{
+    margin: 5px 0;
+  }
   a {
-    color: #ffa64d;
+    color: #b04004;
   }
 
   a:visited{
-    color: #c05d0d;
+    color: #632301;
   }
 
   a:hover{
@@ -39,12 +41,12 @@ body {
     width: 100%; /* Full-width */ 
     grid-area: date_calc;
     color: #444;
-    margin: 10px auto;
+    margin: 15px auto;
 
   }
 
   #date_help{
-    padding: 5px 10px;
+    padding: 10px 10px;
     font-weight: bold;
     vertical-align: middle;
   } 
