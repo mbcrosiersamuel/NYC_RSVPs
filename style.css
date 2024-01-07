@@ -56,5 +56,6 @@ body {
   }
 
 .tabulator-header .tabulator-col{
-  background-color: #b4d3db;
+  background: #b4d3db !important;
+  background-color: #b4d3db !important;
 }
