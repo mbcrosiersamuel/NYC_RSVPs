@@ -35,9 +35,9 @@ body {
     padding: 5px 0px;
     font-family: "Helvetica", "Arial", sans-serif;
     font-size: 14px;
-    background-color: #ffead5;
+    background-color: #b4d3db;
     border: 1px solid;
-    border-color: #b4d3db;
+    border-color: #277e96;
     width: 100%; /* Full-width */ 
     grid-area: date_calc;
     color: #444;
@@ -50,3 +50,11 @@ body {
     font-weight: bold;
     vertical-align: middle;
   } 
+
+  .tabulator-row-odd{
+    background-color: #b4d3db;
+  }
+
+.tabulator-header{
+  background-color: #b4d3db;
+}
