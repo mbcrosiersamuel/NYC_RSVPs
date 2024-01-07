@@ -35,7 +35,7 @@ body {
     padding: 5px 0px;
     font-family: "Helvetica", "Arial", sans-serif;
     font-size: 14px;
-    background-color: #b4d3db;
+    background-color: #d2edf3;
     border: 1px solid;
     border-color: #277e96;
     width: 100%; /* Full-width */ 
@@ -51,10 +51,10 @@ body {
     vertical-align: middle;
   } 
 
-  .tabulator-row-odd{
-    background-color: #b4d3db;
+  .tabulator-row-even{
+    background-color: #d2edf3;
   }
 
-.tabulator-header{
+.tabulator-col{
   background-color: #b4d3db;
 }
