@@ -51,10 +51,10 @@ body {
     vertical-align: middle;
   } 
 
-  .tabulator-row-even{
+ .tabulator-row.tabulator-row-even{
     background-color: #d2edf3;
   }
 
-.tabulator-col{
+.tabulator-header .tabulator-col{
   background-color: #b4d3db;
 }
