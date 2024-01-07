@@ -20,11 +20,11 @@ body {
     margin: 5px 0;
   }
   a {
-    color: #b04004;
+    color: #277e96;
   }
 
   a:visited{
-    color: #632301;
+    color: #295d6b;
   }
 
   a:hover{
@@ -37,7 +37,7 @@ body {
     font-size: 14px;
     background-color: #ffead5;
     border: 1px solid;
-    border-color: #ffa64d;
+    border-color: #b4d3db;
     width: 100%; /* Full-width */ 
     grid-area: date_calc;
     color: #444;
