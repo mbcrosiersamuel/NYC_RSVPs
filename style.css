@@ -20,11 +20,11 @@ body {
     margin: 5px 0;
   }
   a {
-    color: #b04004;
+    color: #277e96;
   }
 
   a:visited{
-    color: #632301;
+    color: #295d6b;
   }
 
   a:hover{
@@ -35,9 +35,9 @@ body {
     padding: 5px 0px;
     font-family: "Helvetica", "Arial", sans-serif;
     font-size: 14px;
-    background-color: #ffead5;
+    background-color: #d2edf3;
     border: 1px solid;
-    border-color: #ffa64d;
+    border-color: #277e96;
     width: 100%; /* Full-width */ 
     grid-area: date_calc;
     color: #444;
@@ -50,3 +50,12 @@ body {
     font-weight: bold;
     vertical-align: middle;
   } 
+
+ .tabulator-row.tabulator-row-even{
+    background-color: #d2edf3;
+  }
+
+.tabulator-header .tabulator-col{
+  background: #b4d3db !important;
+  background-color: #b4d3db !important;
+}
