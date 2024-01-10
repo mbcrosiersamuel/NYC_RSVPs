@@ -90,6 +90,21 @@ body {
     vertical-align: middle;
   } 
 
+
+
+  .tabulator{
+    background-color: white;
+  }
+
+  .tabulator .tabulator-header {
+    background-color: white;
+  }
+
+  .tabulator-row .tabulator-responsive-collapse {
+    border-right: 1px solid #aaa;
+}
+
+
  .tabulator-row.tabulator-row-even{
     background-color: #d2edf3;
   }
