@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<html>
+
+<head>
+  <title>NYC Reservation Timing Guide</title>
+
+  <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <h1 style="margin:0px;padding:2px;">NYC Restaurant Reservation Timing Guide</h1>
+  <div class="subdescription">A handy reference for understanding when reservations are released at popular New York City restaurants.</div>
+</br>
+
+  <h2>Reservation Open Date Calculator</h2>
+  <div class="subdescription"> Input your desired restaurant and date to calculate when reservations will open for booking</div>
+  <form style="margin:6px;line-height:40px;">
+    <label>
+      Restaurant:
+      <!-- Options populated from restaurant data -->
+      <select id="restaurantSelect"></select>
+    </label>
+  </br> 
+    <label>
+      Ideal Reservation Date:
+      <input type="date" id="dateInput">
+    </label>
+  </br>
+    <button type="button" id="submit">Check When Reservations Open</button>
+  </form>
+
+  <div id="result" style="color:#295d6b;margin:6px;"></div>
+
+</br>
+
+  <h2> Restaurant-Level Data </h2>
+  <div class="subdescription">Reservation release info for select New York City Restaurants: Booking platforms and links, reservation release schedules, and date of the latest currently available reservation.</div>
+</br>
+
+  <div id="restaurant-data" style="margin:6px;"></div>
+
+  <div class="date_calc"> 
+    <p style="text-align:center; font-size:16px"><b>An important caveat:</b> Restaurants regularly change their reservation release schedules! If something looks wrong, <a href="mailto:mbcrosier@gmail.com">let MB know</a>. </p>
+  </div>
+
+  <script src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+
+</html>
