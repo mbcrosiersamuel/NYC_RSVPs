@@ -2,6 +2,8 @@ body {
     font-family: "Helvetica", "Arial", sans-serif;
     color: #444;
   }
+
+
   h1, h2, strong {
     color: #222;
     margin:0px;
@@ -9,18 +11,56 @@ body {
   }
   header {
     font-size: 25px;
-    padding: 0px 0px 10px 0px;
-  }
-  body {
-    padding: 20px 20px;
+    padding: 0px 0px 0px 0px;
   }
   article {
     font-size: 16px;
     border-top: 2px solid gray;
   }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    margin-block-start: 0em;
+  }
+
   li{
     margin: 5px 0;
+    display: inline;
+    float:left;
+    border-right: 1px solid #bbb;
   }
+  
+  li:last-child {
+    border-right: none;
+  }
+
+  li.active a{
+    color: #444;
+  }
+
+  li a {
+    display: block;
+    color: #277e96;
+    text-align: left;
+    padding: 3px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color on hover */
+  li a:hover {
+    background-color: #d2edf3;
+    color: #444;
+  }
+
+  li.active a:hover {
+    background-color: #fff;
+    color: #444;
+  }
+
   a {
     color: #277e96;
   }
@@ -35,7 +75,7 @@ body {
 
   .subdescription {
     margin:0px;
-    padding:2px;
+    padding:2px 2px 6px 2px;
     font-style:italic;
   }
 
