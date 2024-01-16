@@ -59,26 +59,26 @@ var DateTime = luxon.DateTime;
     var table = new Tabulator("#restaurant-data", {
       data:tabledata, //load initial data into table
       layout:"fitColumns",
-      responsiveLayout:"collapse",
+      responsiveLayout:"hide",
       columns:[ //Define Table Columns
-        {title:"Restaurant", field:"name", formatter:"link", sorter:"string", width:"200", formatterParams:{
+        {title:"Restaurant", field:"name", formatter:"link", sorter:"string", widthidth:200, responsive:0, formatterParams:{
                 labelField:"name",
                 urlField:"restaurant_url",
                 target:"_blank",
             }, headerFilter:"input", headerFilterPlaceholder:"Search for a Restaurant"},
-        {title:"Neighborhood", field:"area", sorter:"string", hozAlign:"center", headerFilter:"input", headerFilterPlaceholder:"e.g. Soho"},
-        {title:"Cuisine", field:"cuisine", sorter:"string", hozAlign:"center",headerFilter:"input", headerFilterPlaceholder:"e.g. Italian"},
-        {title:"Platform", field:"platform", formatter:"link", sorter:"string", hozAlign:"center", formatterParams:{
+        {title:"Neighborhood", field:"area", sorter:"string", hozAlign:"center", width:200, headerFilter:"input", headerFilterPlaceholder:"e.g. Soho"},
+        {title:"Cuisine", field:"cuisine", sorter:"string", hozAlign:"center", width:150,headerFilter:"input", headerFilterPlaceholder:"e.g. Italian"},
+        {title:"Platform", field:"platform", formatter:"link", sorter:"string", width:150, hozAlign:"center", formatterParams:{
                 labelField:"platform",
                 urlField:"platform_url",
                 target:"_blank",
             }, headerFilter:"input", headerFilterPlaceholder:"e.g. Resy"},
-        {title:"Days in Advance", field:"days", sorter:"number", hozAlign:"center", headerFilter:"input", headerFilterPlaceholder:"Min Days", headerFilterFunc:">="},
-        {title:"Time (EST)", field:"time_3", hozAlign:"center", sorter:"datetime", headerFilter:"input", headerFilterPlaceholder:"e.g. 9:00 AM", formatter:"datetime", formatterParams:{
+        {title:"Days in Advance", field:"days", sorter:"number", hozAlign:"center", width:150, headerFilter:"input", responsive:2, headerFilterPlaceholder:"Min Days", headerFilterFunc:">="},
+        {title:"Time (EST)", field:"time_3", hozAlign:"center", sorter:"datetime", width:150, headerFilter:"input", responsive: 2, headerFilterPlaceholder:"e.g. 9:00 AM", formatter:"datetime", formatterParams:{
           outputFormat:"h:mm a",
           invalidPlaceholder:"(invalid date)",
         }},
-        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", width:"300", mutator:customMutator, formatter:"datetime", formatterParams:{
+        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", width:300, responsive:3, mutator:customMutator, formatter:"datetime", formatterParams:{
           outputFormat:"DDDD",
           invalidPlaceholder:"Invalid date",
 }},
@@ -96,6 +96,9 @@ var DateTime = luxon.DateTime;
 
 // Populate restaurant select options
 const select = document.getElementById("restaurantSelect");
+
+
+
 tabledata.forEach(r => {
   const option = document.createElement("option");
   option.value = r.name;
@@ -103,11 +106,19 @@ tabledata.forEach(r => {
   select.appendChild(option);
 });
 
+
 // Handle form submit
 const form = document.querySelector("form");
 const result = document.getElementById("result");
 
+
 document.getElementById("submit").addEventListener("click", () => {
+
+  const existingButtons = document.querySelectorAll('add-to-calendar-button');
+  Array.from(existingButtons).forEach(button => {
+    button.parentElement.removeChild(button);
+  });
+
   
   const restaurant = form.restaurantSelect.value;
   const desiredReservationDate = new Date(form.dateInput.value);
@@ -126,13 +137,34 @@ document.getElementById("submit").addEventListener("click", () => {
   }
 
   const bookingDate = getBookingDate(desiredReservationDate, restaurantData);
+
   const today = new Date();
 
   if (today > bookingDate) {
     result.innerText = `>> Reservations at ${restaurantData.name} are already open for your desired date!`;
   } else {
     result.innerText = `>> Reservations for ${restaurantData.name} will open on ${bookingDate.toDateString()} at ${restaurantData.time_3.toFormat('h:mm a ZZZZ')}`; 
-  
+      
+  const bookingDateLuxon = DateTime.fromJSDate(bookingDate);
+
+       // Add button
+  const button = document.createElement("add-to-calendar-button");
+  button.setAttribute('name', `Make ${restaurantData.name} Reservation`);  
+  button.setAttribute('label', `Add a Calendar Reminder`);  
+  button.setAttribute('startDate', `${bookingDateLuxon.toISODate()}`);
+  button.setAttribute('endDate', `${bookingDateLuxon.toISODate()}`);
+  button.setAttribute('startTime', `${restaurantData.time_3.toFormat('hh:mm')}`);
+  button.setAttribute('endTime', `${restaurantData.time_3.plus({ minutes: 5 }).toFormat('hh:mm')}`);
+  button.setAttribute('timeZone', "America/New_York");
+  button.setAttribute('options', "'Apple','Google','iCal'");
+
+  console.log(button);
+
+// Append 
+  document.body.appendChild(button);
+
+
+
 }
 
 });
