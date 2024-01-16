@@ -61,24 +61,24 @@ var DateTime = luxon.DateTime;
       layout:"fitColumns",
       responsiveLayout:"hide",
       columns:[ //Define Table Columns
-        {title:"Restaurant", field:"name", formatter:"link", sorter:"string", widthidth:200, responsive:0, formatterParams:{
+        {title:"Restaurant", field:"name", formatter:"link", sorter:"string", minWidth:200, responsive:0, formatterParams:{
                 labelField:"name",
                 urlField:"restaurant_url",
                 target:"_blank",
             }, headerFilter:"input", headerFilterPlaceholder:"Search for a Restaurant"},
-        {title:"Neighborhood", field:"area", sorter:"string", hozAlign:"center", width:200, headerFilter:"input", headerFilterPlaceholder:"e.g. Soho"},
-        {title:"Cuisine", field:"cuisine", sorter:"string", hozAlign:"center", width:150,headerFilter:"input", headerFilterPlaceholder:"e.g. Italian"},
-        {title:"Platform", field:"platform", formatter:"link", sorter:"string", width:150, hozAlign:"center", formatterParams:{
+        {title:"Neighborhood", field:"area", sorter:"string", hozAlign:"center",  minWidth:150, responsive:5, headerFilter:"input", headerFilterPlaceholder:"e.g. Soho"},
+        {title:"Cuisine", field:"cuisine", sorter:"string", hozAlign:"center", minWidth:150, responsive:5, headerFilter:"input", headerFilterPlaceholder:"e.g. Italian"},
+        {title:"Platform", field:"platform", formatter:"link", sorter:"string",  minWidth:150,responsive:4, hozAlign:"center", formatterParams:{
                 labelField:"platform",
                 urlField:"platform_url",
                 target:"_blank",
             }, headerFilter:"input", headerFilterPlaceholder:"e.g. Resy"},
-        {title:"Days in Advance", field:"days", sorter:"number", hozAlign:"center", width:150, headerFilter:"input", responsive:2, headerFilterPlaceholder:"Min Days", headerFilterFunc:">="},
-        {title:"Time (EST)", field:"time_3", hozAlign:"center", sorter:"datetime", width:150, headerFilter:"input", responsive: 2, headerFilterPlaceholder:"e.g. 9:00 AM", formatter:"datetime", formatterParams:{
+        {title:"Days in Advance", field:"days", sorter:"number", hozAlign:"center", minWidth:150, headerFilter:"input", responsive:2, headerFilterPlaceholder:"Min Days", headerFilterFunc:">="},
+        {title:"Time (EST)", field:"time_3", hozAlign:"center", sorter:"datetime", minWidth:150,headerFilter:"input", responsive: 2, headerFilterPlaceholder:"e.g. 9:00 AM", formatter:"datetime", formatterParams:{
           outputFormat:"h:mm a",
           invalidPlaceholder:"(invalid date)",
         }},
-        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", width:300, responsive:3, mutator:customMutator, formatter:"datetime", formatterParams:{
+        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", minWidth:250, responsive:3, mutator:customMutator, formatter:"datetime", formatterParams:{
           outputFormat:"DDDD",
           invalidPlaceholder:"Invalid date",
 }},
