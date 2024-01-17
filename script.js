@@ -45,11 +45,11 @@ var DateTime = luxon.DateTime;
         const cutoffHour = data.time_3.hour
         const cutoffMinute = data.time_3.minute
       
-        const cutoff = now.plus({ days: data.days })
+        const cutoff = now.plus({ days: data.days -1 })
           .set({ hour: cutoffHour, minute: cutoffMinute })
       
         if (cutoff < now) {
-          cutoff.minus({ days: 1 }) 
+          cutoff.plus({ days: 1 }) 
         }
         
         return cutoff
