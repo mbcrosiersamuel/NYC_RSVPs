@@ -1,7 +1,7 @@
 var DateTime = luxon.DateTime;
 
     var tabledata = [
-  {id:1, name:"Via Carota", restaurant_url:"https://viacarota.com", area:"West Village", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/via-carota", available_at:"30 days in advance at 10 AM", days:30, time_3: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
+  {id:1, name:"Via Carota", restaurant_url:"https://viacarota.com", area:"West Village", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/via-carota", available_at:"14 days in advance at 10 AM", days:30, time_3: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
   {id:2, name:"The Four Horsemen", restaurant_url:"https://fourhorsemenbk.com", area:"Williamsburg", cuisine:"Wine Bar", platform:"Resy", platform_url:"https://resy.com/cities/ny/the-four-horsemen", available_at:"30 days in advance at 7 AM", days:30, time_3: DateTime.fromISO("1970-01-01T07:00:00", { zone: "America/New_York" })},
   {id:3, name:"Carbone", restaurant_url:"https://carbonenewyork.com", area:"Greenwich Village", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/carbone", available_at:"30 days in advance at 10 AM", days:30, time_3: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
   {id:4, name:"Lilia", restaurant_url:"https://www.lilianewyork.com", area:"Williamsburg", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/lilia", available_at:"28 days in advance at 10 AM", days:28, time_3: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
@@ -45,7 +45,7 @@ var DateTime = luxon.DateTime;
         const cutoffHour = data.time_3.hour
         const cutoffMinute = data.time_3.minute
       
-        const cutoff = now.plus({ days: data.days })
+        const cutoff = now.plus({ days: data.days -1 })
           .set({ hour: cutoffHour, minute: cutoffMinute })
       
         if (cutoff < now) {
