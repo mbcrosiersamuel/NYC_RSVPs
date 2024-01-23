@@ -64,7 +64,7 @@ var DateTime = luxon.DateTime;
     var table = new Tabulator("#restaurant-data", {
       data:tabledata, //load initial data into table
       layout:"fitColumns",
-      responsiveLayout:"hide",
+      responsiveLayout:"collapse",
       columns:[ //Define Table Columns
         {title:"Restaurant", field:"name", formatter:"link", sorter:"string", minWidth:200, responsive:0, formatterParams:{
                 labelField:"name",
@@ -78,12 +78,12 @@ var DateTime = luxon.DateTime;
                 urlField:"platform_url",
                 target:"_blank",
             }, headerFilter:"input", headerFilterPlaceholder:"e.g. Resy"},
-        {title:"Days in Advance", field:"days", sorter:"number", hozAlign:"center", minWidth:150, headerFilter:"input", headerFilterPlaceholder:"Min Days", headerFilterFunc:">="},
-        {title:"Time (EST)", field:"time_3", hozAlign:"center", sorter:"datetime", minWidth:150,headerFilter:"input", headerFilterPlaceholder:"e.g. 9:00 AM", formatter:"datetime", formatterParams:{
+        {title:"Days in Advance", field:"days", sorter:"number", hozAlign:"center", minWidth:150, responsive:2, headerFilter:"input", headerFilterPlaceholder:"Min Days", headerFilterFunc:">="},
+        {title:"Time (EST)", field:"time_3", hozAlign:"center", sorter:"datetime", minWidth:150, responsive:2, headerFilter:"input", headerFilterPlaceholder:"e.g. 9:00 AM", formatter:"datetime", formatterParams:{
           outputFormat:"h:mm a",
           invalidPlaceholder:"(invalid date)",
         }},
-        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", minWidth:250, mutator:customMutator, formatter:"datetime", formatterParams:{
+        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", minWidth:250, responsive:0, mutator:customMutator, formatter:"datetime", formatterParams:{
           outputFormat:"DDDD",
           invalidPlaceholder:"Invalid date",
 }},
