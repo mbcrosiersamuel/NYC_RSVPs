@@ -83,7 +83,7 @@ var DateTime = luxon.DateTime;
           outputFormat:"h:mm a",
           invalidPlaceholder:"(invalid date)",
         }},
-        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", minWidth:250, responsive:0, mutator:customMutator, formatter:"datetime", formatterParams:{
+        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", minWidth:250, responsive:1, mutator:customMutator, formatter:"datetime", formatterParams:{
           outputFormat:"DDDD",
           invalidPlaceholder:"Invalid date",
 }},
@@ -161,7 +161,7 @@ document.getElementById("submit").addEventListener("click", () => {
   button.setAttribute('startTime', `${restaurantData.time_3.toFormat('hh:mm')}`);
   button.setAttribute('endTime', `${restaurantData.time_3.plus({ minutes: 5 }).toFormat('hh:mm')}`);
   button.setAttribute('timeZone', "America/New_York");
-  button.setAttribute('options', "'Apple','Google','iCal'");
+  button.setAttribute('options', "'Apple','Google','iCal', 'Outlook.com'");
 
   console.log(button);
 
