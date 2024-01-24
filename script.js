@@ -159,8 +159,8 @@ document.getElementById("submit").addEventListener("click", () => {
   button.setAttribute('label', `Add a Calendar Reminder`);  
   button.setAttribute('startDate', `${bookingDateLuxon.toISODate()}`);
   button.setAttribute('endDate', `${bookingDateLuxon.toISODate()}`);
-  button.setAttribute('startTime', `${restaurantData.time_3.toFormat('hh:mm')}`);
-  button.setAttribute('endTime', `${restaurantData.time_3.plus({ minutes: 5 }).toFormat('hh:mm')}`);
+  button.setAttribute('startTime', `${restaurantData.time_3.toFormat('HH:mm')}`);
+  button.setAttribute('endTime', `${restaurantData.time_3.plus({ minutes: 5 }).toFormat('HH:mm')}`);
   button.setAttribute('timeZone', "America/New_York");
   button.setAttribute('options', "'Apple','Google','iCal', 'Outlook.com'");
   button.setAttribute('description', `[url] ${restaurantData.platform_url}?date=${desiredDateLuxon.toISODate()}|Booking Link[/url]`);
