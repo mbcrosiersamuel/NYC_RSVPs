@@ -18,7 +18,7 @@ body {
     border-top: 2px solid gray;
   }
 
-  ul {
+  .nav-bar {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -27,40 +27,39 @@ body {
     margin-block-start: 0em;
   }
 
-  li{
+  .nav-item{
     margin: 5px 0;
     display: inline;
     float:left;
     border-right: 1px solid #bbb;
   }
   
-  li:last-child {
+  .nav-item:last-child {
     border-right: none;
   }
 
-  li.active a{
-    color: #444;
-  }
-
-  li a {
+  .nav-item a {
     display: block;
     color: #277e96;
     text-align: left;
     padding: 3px 16px;
     text-decoration: none;
   }
+
+  .nav-item-active a{
+    color: #444;
+  }
+
   
   /* Change the link color on hover */
-  li a:hover {
+  .nav-item a:hover {
     background-color: #d2edf3;
     color: #444;
   }
 
-  li.active a:hover {
-    background-color: #fff;
-    color: #444;
+  .nav-item-active a:hover{
+    background-color:white;
   }
-
   a {
     color: #277e96;
   }
@@ -73,10 +72,30 @@ body {
     text-decoration: none;
   }
 
+  img{
+    width:80%;
+    max-width:800px;
+    border:3px solid #ddd;
+}
+
+ .subdescription-bordered {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+  margin:0px;
+  padding:6px 2px 6px 2px;
+  font-style:italic;
+  }
+
   .subdescription {
     margin:0px;
     padding:2px 2px 6px 2px;
     font-style:italic;
+  }
+
+  .subdescription-small {
+    margin:0px;
+    padding:2px 2px 6px 2px;
+    font-size:10px;
   }
 
 #dateInput, #restaurantSelect {
