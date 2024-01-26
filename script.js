@@ -126,8 +126,7 @@ document.getElementById("submit").addEventListener("click", () => {
 
   
   const restaurant = form.restaurantSelect.value;
-  const desiredReservationDate = new Date(form.dateInput.value);
-  desiredReservationDate.setHours(desiredReservationDate.getHours() + 5); // adjust for NYC time zone
+  var desiredReservationDate = DateTime.fromISO(form.dateInput.value).setZone('America/New_York');
 
   const restaurantData = tabledata.find(r => r.name === restaurant);
   
@@ -136,34 +135,31 @@ document.getElementById("submit").addEventListener("click", () => {
     return;
   }
 
-  if (!Date.parse(desiredReservationDate)){
+  if (!desiredReservationDate.isValid){
     result.textContent = "Please enter a valid date.";
     return;
   }
 
-  const bookingDate = getBookingDate(desiredReservationDate, restaurantData);
+  var bookingDate = desiredReservationDate.minus({days: restaurantData.days}).set({hour: restaurantData.time_3.hour, minute: restaurantData.time_3.minute });
 
-  const today = new Date();
+  const now = DateTime.now().setZone('America/New_York');
 
-  if (today > bookingDate) {
+  if (now > bookingDate) {
     result.innerText = `>> Reservations at ${restaurantData.name} are already open for your desired date!`;
   } else {
-    result.innerText = `>> Reservations for ${restaurantData.name} will open on ${bookingDate.toDateString()} at ${restaurantData.time_3.toFormat('h:mm a ZZZZ')}`; 
-      
-  const bookingDateLuxon = DateTime.fromJSDate(bookingDate);
-  const desiredDateLuxon = DateTime.fromJSDate(desiredReservationDate);
+    result.innerText = `>> Reservations for ${restaurantData.name} will open on ${bookingDate.toFormat('MMMM dd, yyyy')} at ${restaurantData.time_3.toFormat('h:mm a ZZZZ')}`; 
 
        // Add button
   const button = document.createElement("add-to-calendar-button");
   button.setAttribute('name', `Make ${restaurantData.name} Reservation`);  
   button.setAttribute('label', `Add a Calendar Reminder`);  
-  button.setAttribute('startDate', `${bookingDateLuxon.toISODate()}`);
-  button.setAttribute('endDate', `${bookingDateLuxon.toISODate()}`);
+  button.setAttribute('startDate', `${bookingDate.toISODate()}`);
+  button.setAttribute('endDate', `${bookingDate.toISODate()}`);
   button.setAttribute('startTime', `${restaurantData.time_3.toFormat('HH:mm')}`);
   button.setAttribute('endTime', `${restaurantData.time_3.plus({ minutes: 5 }).toFormat('HH:mm')}`);
   button.setAttribute('timeZone', "America/New_York");
-  button.setAttribute('options', "'Apple','Google','iCal', 'Outlook.com'");
-  button.setAttribute('description', `[url] ${restaurantData.platform_url}?date=${desiredDateLuxon.toISODate()}|Booking Link[/url]`);
+  button.setAttribute('options', "'Google','iCal', 'Apple', 'Outlook.com'");
+  button.setAttribute('description', `[url] ${restaurantData.platform_url}?date=${desiredReservationDate.toISODate()}|Booking Link[/url]`);
 
   console.log(button);
 
@@ -175,11 +171,3 @@ document.getElementById("submit").addEventListener("click", () => {
 }
 
 });
-
-function getBookingDate(desiredReservationDate, restaurant) {
-  const bookingDate = new Date(desiredReservationDate);
-
-  bookingDate.setDate(desiredReservationDate.getDate() - restaurant.days);
-
-  return bookingDate; 
-};
