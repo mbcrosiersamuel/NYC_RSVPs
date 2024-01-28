@@ -36,7 +36,7 @@ var DateTime = luxon.DateTime;
   {id:33, name:"Raoul's", restaurant_url:"http://www.raouls.com/", area:"Greenwich Village", cuisine:"French", platform:"Resy", platform_url:"https://resy.com/cities/ny/raoulsrestaurant", available_at:"30 days in advance at 8 AM", days:30, time_3: DateTime.fromISO("1970-01-01T08:00:00", { zone: "America/New_York" })},
   //{id:34, name:"Minetta Tavern", restaurant_url:"http://www.minettatavernny.com/", area:"Soho", cuisine:"French", platform:"Resy", platform_url:"https://resy.com/cities/ny/minetta-tavern", available_at:"30 days in advance at 12 AM", days:30, time_3: DateTime.fromISO("1970-01-01T09:00:00", { zone: "America/New_York" })},
   {id:35, name:"Misi", restaurant_url:"http://www.misinewyork.com", area:"Williamsburg", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/ny/misi", available_at:"27 days in advance at 10 AM", days:27, time_3: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
-  {id:36, name:"Double Chicken Please", restaurant_url:"www.doublechickenplease.com", area:"Lower East Side", cuisine:"Cocktails / New American", platform:"Resy", platform_url:"https://resy.com/cities/ny/double-chicken-please", available_at:"6 days in advance at 12 AM", days:6, time_3: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })}
+  {id:36, name:"Double Chicken Please", restaurant_url:"http://www.doublechickenplease.com", area:"Lower East Side", cuisine:"Cocktails / New American", platform:"Resy", platform_url:"https://resy.com/cities/ny/double-chicken-please", available_at:"6 days in advance at 12 AM", days:6, time_3: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })}
 
 ]; 
 
