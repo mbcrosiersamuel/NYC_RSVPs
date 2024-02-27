@@ -45,7 +45,6 @@ var DateTime = luxon.DateTime;
   {id:42, name:"Atoboy", restaurant_url:"http://www.atoboynyc.com/", area:"NoMad", cuisine:"Korean", platform:"Resy", platform_url:"https://resy.com/cities/ny/atoboy", available_at:"29 days in advance at midnight", days:29, time_3: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
 ]; 
 
-
     var customMutator = function(value, data, type, params, component){
         const now = DateTime.now().setZone('America/New_York')
         const cutoffHour = data.time_3.hour
@@ -120,7 +119,7 @@ tabledata.forEach(r => {
 
 // Handle form submit
 const form = document.querySelector("form");
-const result = document.getElementById("result");
+const result = document.getElementById("calculator-result");
 
 
 document.getElementById("submit").addEventListener("click", () => {

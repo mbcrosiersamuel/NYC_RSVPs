@@ -1,104 +1,101 @@
 body {
-    font-family: "Helvetica", "Arial", sans-serif;
-    color: #444;
-  }
-
-
-  h1, h2, strong {
-    color: #222;
-    margin:0px;
-    padding:2px;
-  }
-  header {
-    font-size: 25px;
-    padding: 0px 0px 0px 0px;
-  }
-  article {
-    font-size: 16px;
-    border-top: 2px solid gray;
-  }
-
-  .nav-bar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: white;
-    margin-block-start: 0em;
-  }
-
-  .nav-item{
-    margin: 5px 0;
-    display: inline;
-    float:left;
-    border-right: 1px solid #bbb;
-  }
-  
-  .nav-item:last-child {
-    border-right: none;
-  }
-
-  .nav-item a {
-    display: block;
-    color: #277e96;
-    text-align: left;
-    padding: 3px 16px;
-    text-decoration: none;
-  }
-
-  .nav-item-active a{
-    color: #444;
-  }
-
-  
-  /* Change the link color on hover */
-  .nav-item a:hover {
-    background-color: #d2edf3;
-    color: #444;
-  }
-
-  .nav-item-active a:hover{
-    background-color:white;
-  }
-  a {
-    color: #277e96;
-  }
-
-  a:visited{
-    color: #295d6b;
-  }
-
-  a:hover{
-    text-decoration: none;
-  }
-
-  img{
-    width:80%;
-    max-width:800px;
-    border:3px solid #ddd;
+  font-family: "Lato", "Arial", sans-serif;
+  color: #444;
+  padding: 0px 10px;
 }
 
- .subdescription-bordered {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-  margin:0px;
-  padding:6px 2px 6px 2px;
-  font-style:italic;
-  }
+h1,
+h2 {
+  color: #222;
+  margin: 0px;
+  padding: 2px;
+}
 
-  .subdescription {
-    margin:0px;
-    padding:2px 2px 6px 2px;
-    font-style:italic;
-  }
+form{
+  margin:6px;
+  line-height:40px;
+}
 
-  .subdescription-small {
-    margin:0px;
-    padding:2px 2px 6px 2px;
-    font-size:10px;
-  }
+#calculator-result{
+  color: #295d6b;
+  margin: 6px;
+}
 
-#dateInput, #restaurantSelect {
+.nav-bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+  margin-block-start: 0em;
+}
+
+.nav-item {
+  margin: 5px 0;
+  display: inline;
+  float: left;
+  border-right: 1px solid #bbb;
+}
+
+.nav-item:last-child {
+  border-right: none;
+}
+
+.nav-item a {
+  display: block;
+  color: #277e96;
+  text-align: left;
+  padding: 3px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+.nav-item a:hover {
+  background-color: #d2edf3;
+  color: #444;
+}
+
+.nav-item-active a {
+  color: #444;
+}
+
+.nav-item-active a:hover {
+  background-color: white;
+}
+
+a {
+  color: #277e96;
+}
+
+a:visited {
+  color: #295d6b;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  width: 80%;
+  max-width: 800px;
+  border: 3px solid #ddd;
+}
+
+hr{
+  color: #295d6b;
+}
+
+.subdescription {
+  margin: 0px;
+  padding: 2px;
+  font-size: 8;
+}
+
+.font-10px {
+  font-size: 10px !important;
+}
+
+.calculator-selector {
   font-family: "Helvetica", "Arial", sans-serif;
   font-size: 14px;
   background-color: #d2edf3;
@@ -106,69 +103,51 @@ body {
   border-color: #277e96;
   padding: 5px;
   color: #444;
-  }
+}
 
-  button {
-    font-family: "Helvetica", "Arial", sans-serif;
-    font-size: 14px;
-    background-color: #d2edf3;
-    border: 1px solid;
-    border-color: #277e96;
-    border-radius: 6px;
-    padding: 5px;
-    color: #444;
-  }
+button {
+  border-radius: 6px;
+}
 
-  button:hover {
-    border: 3px solid;
-    transition: 0.7s;
+button:hover {
+  border: 3px solid;
+  transition: 0.7s;
 }
 
 .button:active {
-  background-color:#277e96;
+  background-color: #277e96;
   border-color: black;
   transition: 0.7s;
 }
 
-  .date_calc {
-    padding: 5px 0px;
-    font-family: "Helvetica", "Arial", sans-serif;
-    font-size: 14px;
-    background-color: #d2edf3;
-    border: 1px solid;
-    border-color: #277e96;
-    grid-area: date_calc;
-    color: #444;
-    margin: 15px 6px;
-
-  }
-
-  #date_help{
-    padding: 10px 10px;
-    font-weight: bold;
-    vertical-align: middle;
-  } 
-
-
-
-  .tabulator{
-    background-color: white;
-  }
-
-  .tabulator .tabulator-header {
-    background-color: white;
-  }
-
-  .tabulator-row .tabulator-responsive-collapse {
-    border-right: 1px solid #aaa;
+#restaurant-data{
+  margin: 6px;
 }
 
 
- .tabulator-row.tabulator-row-even{
-    background-color: #d2edf3;
-  }
+#disclaimer {
+  text-align: center;
+  font-size: 16px;
+}
 
-.tabulator-header .tabulator-col{
+.tabulator {
+  background-color: white;
+}
+
+.tabulator .tabulator-header {
+  background-color: white;
+}
+
+.tabulator-row .tabulator-responsive-collapse {
+  border-right: 1px solid #aaa;
+}
+
+
+.tabulator-row.tabulator-row-even {
+  background-color: #d2edf3;
+}
+
+.tabulator-header .tabulator-col {
   background: #b4d3db !important;
   background-color: #b4d3db !important;
 }
