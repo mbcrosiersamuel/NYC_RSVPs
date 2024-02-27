@@ -102,7 +102,7 @@ hr{
   border: 1px solid;
   border-color: #277e96;
   padding: 5px;
-  color: #444;
+  color: #232323;
 }
 
 button {
@@ -140,10 +140,15 @@ button:hover {
 
 .tabulator .tabulator-header {
   background-color: white;
+  color: #232323;
 }
 
 .tabulator-row .tabulator-responsive-collapse {
   border-right: 1px solid #aaa;
+}
+
+.tabulator-row.tabulator-selectable:hover {
+  background-color: #e9e8e8 !important;
 }
 
 
