@@ -134,6 +134,10 @@ button:hover {
   background-color: white;
 }
 
+.tabulator-header-filter input::placeholder {
+  font-family: "Lato", "Arial", sans-serif;
+}
+
 .tabulator .tabulator-header {
   background-color: white;
 }
