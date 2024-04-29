@@ -43,7 +43,9 @@ var DateTime = luxon.DateTime;
   {id:40, name:"Fish Cheeks", restaurant_url:"http://fishcheeksnyc.com/", area:"Nolita", cuisine:"Thai", platform:"Resy", platform_url:"https://resy.com/cities/ny/fish-cheeks", available_at:"29 days in advance at midnight", days:29, time_3: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
   {id:41, name:"Chinese Tuxedo", restaurant_url:"https://chinesetuxedo.com/", area:"Chinatown", cuisine:"Chinese", platform:"Resy", platform_url:"https://resy.com/cities/ny/chinese-tuxedo", available_at:"14 days in advance at midnight", days:14, time_3: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
   {id:42, name:"Atoboy", restaurant_url:"http://www.atoboynyc.com/", area:"NoMad", cuisine:"Korean", platform:"Resy", platform_url:"https://resy.com/cities/ny/atoboy", available_at:"29 days in advance at midnight", days:29, time_3: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
-  {id:43, name:"Monkey Bar", restaurant_url:"https://nycmonkeybar.com/", area:"Midtown East", cuisine:"American", platform:"Resy", platform_url:"https://resy.com/cities/ny/monkey-bar-nyc", available_at:"13 days in advance at 9 AM", days:13, time_3: DateTime.fromISO("1970-01-01T09:00:00", { zone: "America/New_York" })}
+  {id:43, name:"Monkey Bar", restaurant_url:"https://nycmonkeybar.com/", area:"Midtown East", cuisine:"American", platform:"Resy", platform_url:"https://resy.com/cities/new-york-ny/venues/monkey-bar-nyc", available_at:"13 days in advance at 9 AM", days:13, time_3: DateTime.fromISO("1970-01-01T09:00:00", { zone: "America/New_York" })},
+  {id:44, name:"Roscioli (Tasting Menu)", restaurant_url:"https://rosciolinyc.com/", area:"Soho", cuisine:"Italian", platform:"Resy", platform_url:"https://resy.com/cities/new-york-ny/venues/roscioli-tasting-menu", available_at:"30 days in advance at 10 AM", days:30, time_3: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
+  {id:45, name:"Bungalow", restaurant_url:"https://www.bungalowny.com/", area:"East Village", cuisine:"Indian", platform:"Resy", platform_url:"https://resy.com/cities/new-york-ny/venues/bungalow-ny", available_at:"14 days in advance at 11 AM", days:14, time_3: DateTime.fromISO("1970-01-01T11:00:00", { zone: "America/New_York" })},
 ]; 
 
     var customMutator = function(value, data, type, params, component){
@@ -59,8 +61,6 @@ var DateTime = luxon.DateTime;
         if (new_day < now) {
           cutoff = cutoff.plus({ days: 1 }) 
         }
-        
-       // console.log(`${data.platform_url}?date=${cutoff.toISODate()}`)
 
         
         return cutoff
@@ -166,8 +166,6 @@ document.getElementById("submit").addEventListener("click", () => {
   button.setAttribute('timeZone', "America/New_York");
   button.setAttribute('options', "'Google','iCal', 'Apple', 'Outlook.com'");
   button.setAttribute('description', `[url] ${restaurantData.platform_url}?date=${desiredReservationDate.toISODate()}|Booking Link[/url]`);
-
-  console.log(button);
 
 // Append 
   document.body.appendChild(button);
