@@ -166,12 +166,14 @@ button:hover {
 .display-ad-container {
   margin-top: 0;
   padding: 0 16px;
-  max-width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .display-ad {
   display: block;
-  max-width: 100%;
+  max-width: 1200px;
 }
 
 .ad-link {
@@ -183,7 +185,7 @@ button:hover {
 .display-ad img {
   max-width: 100%;
   height: auto;
-  transition: opacity 0.7s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .display-ad picture {
