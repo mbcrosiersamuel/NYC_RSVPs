@@ -1,14 +1,14 @@
 body {
   font-family: "Lato", "Arial", sans-serif;
   color: #444;
-  padding: 0px 10px;
+  padding: 0px 0px;
 }
 
 h1,
 h2 {
   color: #222;
   margin: 0px;
-  padding: 2px;
+  padding: 2px 10px;
 }
 
 form{
@@ -75,7 +75,8 @@ a:hover {
   text-decoration: none;
 }
 
-img {
+/* Add a new class for content images */
+.content-image {
   width: 80%;
   max-width: 800px;
   border: 3px solid #ddd;
@@ -159,4 +160,33 @@ button:hover {
 .tabulator-header .tabulator-col {
   background: #b4d3db !important;
   background-color: #b4d3db !important;
+}
+
+/* Add container for display ad */
+.display-ad-container {
+  margin-top: 0;
+  padding: 0 16px;
+  max-width: 100%;
+}
+
+.display-ad {
+  display: block;
+  max-width: 100%;
+}
+
+.ad-link {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.display-ad img {
+  max-width: 100%;
+  height: auto;
+  transition: opacity 0.7s ease-in-out;
+}
+
+.display-ad picture {
+  display: block;
+  transition: opacity 0.7s ease-in-out;
 }
