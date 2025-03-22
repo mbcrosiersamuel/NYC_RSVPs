@@ -50,6 +50,7 @@ var DateTime = luxon.DateTime;
   {id:47, name:"Din Tai Fung", restaurant_url:"https://www.dintaifungusa.com/", area:"Midtown West", cuisine:"Chinese", platform:"Yelp", platform_url:"https://www.yelp.com/reservations/din-tai-fung-new-york-3", available_at:"30 days in advance at midnight", days:30, time_3: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
   {id:48, name:"Le Café Louis Vuitton", restaurant_url:"https://lecafelvnyc.com/", area:"Midtown East", cuisine:"French", platform:"Resy", platform_url:"https://resy.com/cities/new-york-ny/venues/le-cafe-louis-vuitton", available_at:"27 days in advance at midnight", days:27, time_3: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
   {id:49, name:"Theodora", restaurant_url:"https://www.theodoranyc.com/", area:"Fort Greene", cuisine:"Mediterranean", platform:"Resy", platform_url:"https://resy.com/cities/ny/theodora", available_at:"30 days in advance at 9 AM", days:30, time_3: DateTime.fromISO("1970-01-01T09:00:00", { zone: "America/New_York" })},
+  {id:50, name:"Ha's Snack Bar", restaurant_url:"https://www.instagram.com/has_dac_biet/", area:"Lower East Side", cuisine:"Vietnamese", platform:"Resy", platform_url:"https://resy.com/cities/new-york-ny/venues/has-snack-bar", available_at:"20 days in advance at 12 PM", days:20, time_3: DateTime.fromISO("1970-01-01T12:00:00", { zone: "America/New_York" })},
 ]; 
 
     var customMutator = function(value, data, type, params, component){
