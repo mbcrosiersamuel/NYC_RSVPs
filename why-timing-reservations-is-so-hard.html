@@ -9,7 +9,7 @@
   <meta name=" description"
     content="Why it's so hard to know exactly when reservations will open at top New York City restaurants">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 
   <script>
     !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
@@ -19,11 +19,11 @@
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/config/site.webmanifest">
+  <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
 
   <hr />
   <ul class="nav-bar">
-    <li class="nav-item"><a href="reservation-open-date-calculator.html">Home</a></li>
+    <li class="nav-item"><a href="index.html">Home</a></li>
     <li class="nav-item"><a href="reservation-open-date-calculator.html">RSVP Open Date Calculator</a></li>
   </ul>
 
@@ -79,12 +79,12 @@
     <p>Take, for example, Adda. <a href="https://resy.com/cities/ny/adda">Their Resy page</a> says, super clearly, that
       reservations are available 60 days in advance:
     </p>
-    <img src="images/adda-60.png" alt="Adda's Resy page showing reservations available 60 days in advance" class="content-image">
+    <img src="assets/images/adda-60.png" alt="Adda's Resy page showing reservations available 60 days in advance" class="content-image">
     <p>
       Easy enough! Since 60 days is ~2 months, when I check Adda's Resy page on January 25th, I expect that reservations
       should be open through late March. But wait a second:
     </p>
-    <img src="images/adda-march.png" alt="Adda's Resy page showing reservations not available in March " class="content-image">
+    <img src="assets/images/adda-march.png" alt="Adda's Resy page showing reservations not available in March " class="content-image">
     <p> On January 25th, the entire month of March shows as unreleased, no reservations anywhere to be seen. The latest
       open reservation is for February 23rd, or 29 days in advance. The 60 day number came from Adda itself, but it's
       clear that it doesn't match the reality that you'll need to snag a reservation.</p>
@@ -101,15 +101,15 @@
     <p> Take, for example, two restaurants, Don Angie and Rubirosa, that both kindly publish when their reservations
       open: In both cases, 7 days in advance.</p>
     <p>Here's Don Angie's guidance:</p>
-    <img src="images/don-angie-banner.png" alt="Don Angie website banner: reservations open 7 days in advance" class="content-image">
+    <img src="assets/images/don-angie-banner.png" alt="Don Angie website banner: reservations open 7 days in advance" class="content-image">
     <p>And Rubirosa's:</p>
-    <img src="images/rubirosa.png"
+                     <img src="assets/images/rubirosa.png"
       alt="Rubirosa Resy description: reservations open 7 days in advance, through 2/1 as of 1/25" class="content-image">
     <p>You'll notice that Rubirosa reservations are open through February 1st, as of 6 pm ET on January 25th. At any
       time between 9 am (when Don Angie opens reservations) and midnight (when Rubirosa opens reservations), we should
       expect reservation availability to be the same, since both open 7 days in advance.</p>
     <p>But when we look at Don Angie's availability, it's a different story:</p>
-    <img src="images/don-angie-feb-1.png" alt="Don Angie reservations not available on February 1 as of 1/25" class="content-image">
+    <img src="assets/images/don-angie-feb-1.png" alt="Don Angie reservations not available on February 1 as of 1/25" class="content-image">
 
     <p>Despite identical messaging on their sites, reservations for Don Angie are open for one fewer day than
       reservations at Rubirosa. Neither restuarant is wrong, or lying, they're just using different definitions for '7
@@ -124,7 +124,7 @@
       ticketed holiday dinners.</p>
     <p> To pick on Don Angie again (sorry Don Angie), their website currently advertises that they'll be closed on two
       upcoming days for private events.</p>
-    <img src="images/don-angie-event.png" alt="Don Angie event closure website popup" class="content-image">
+    <img src="assets/images/don-angie-event.png" alt="Don Angie event closure website popup" class="content-image">
     <p>There's no mention of this on Resy, and many restuarants might not mention closures anywhere at all - they just
       don't permit reservations on that evening. This is harder to account for, and is unfortunately just a known risk
       of playing the Resy game.</p>
