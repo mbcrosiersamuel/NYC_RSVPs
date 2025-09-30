@@ -34,21 +34,21 @@ var DateTime = luxon.DateTime;
   {id:36, name:"Double Chicken Please", restaurant_url:"http://www.doublechickenplease.com", area:"Lower East Side", cuisine:"Cocktails / New American", reservation_method:"Resy", reservation_link:"https://resy.com/cities/ny/double-chicken-please", available_at:"6 days in advance at 12 AM", advance_period:6, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
   {id:37, name:"Sushi Nakazawa", restaurant_url:"https://www.sushinakazawa.com/", area:"West Village", cuisine:"Sushi", reservation_method:"Resy", reservation_link:"https://resy.com/cities/ny/sushi-nakazawa", available_at:"14 days in advance at 12 AM", advance_period:14, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
   {id:38, name:"Peter Luger", restaurant_url:"https://peterluger.com/", area:"Williamsburg", cuisine:"Steakhouse", reservation_method:"Resy", reservation_link:"https://resy.com/cities/ny/peter-luger-steak-house", available_at:"30 days in advance at midnight", advance_period:30, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
-  {id:40, name:"Fish Cheeks", restaurant_url:"http://fishcheeksnyc.com/", area:"Nolita", cuisine:"Thai", reservation_method:"Resy", reservation_link:"https://resy.com/cities/ny/fish-cheeks", available_at:"29 days in advance at midnight", advance_period:29, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
-  {id:41, name:"Chinese Tuxedo", restaurant_url:"https://chinesetuxedo.com/", area:"Chinatown", cuisine:"Chinese", reservation_method:"Resy", reservation_link:"https://resy.com/cities/ny/chinese-tuxedo", available_at:"14 days in advance at midnight", advance_period:14, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
-  {id:42, name:"Atoboy", restaurant_url:"http://www.atoboynyc.com/", area:"NoMad", cuisine:"Korean", reservation_method:"Resy", reservation_link:"https://resy.com/cities/ny/atoboy", available_at:"29 days in advance at midnight", advance_period:29, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
+  {id:40, name:"Fish Cheeks", restaurant_url:"http://fishcheeksnyc.com/", area:"Nolita", cuisine:"Thai", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/fish-cheeks", available_at:"29 days in advance at midnight", advance_period:29, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
+  {id:41, name:"Chinese Tuxedo", restaurant_url:"https://chinesetuxedo.com/", area:"Chinatown", cuisine:"Chinese", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/chinese-tuxedo", available_at:"14 days in advance at midnight", advance_period:14, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
+  {id:42, name:"Atoboy", restaurant_url:"http://www.atoboynyc.com/", area:"NoMad", cuisine:"Korean", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/atoboy", available_at:"29 days in advance at midnight", advance_period:29, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
   {id:43, name:"Monkey Bar", restaurant_url:"https://nycmonkeybar.com/", area:"Midtown East", cuisine:"American", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/monkey-bar-nyc", available_at:"20 days in advance at 9 AM", advance_period:20, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T09:00:00", { zone: "America/New_York" })},
   {id:44, name:"Roscioli (Tasting Menu)", restaurant_url:"https://rosciolinyc.com/", area:"Soho", cuisine:"Italian", reservation_method:"OpenTable", reservation_link:"https://www.opentable.com/r/roscioli-tasting-menu-new-york", available_at:"30 days in advance at 10 AM", advance_period:30, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
   {id:45, name:"Bungalow", restaurant_url:"https://www.bungalowny.com/", area:"East Village", cuisine:"Indian", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/bungalow-ny", available_at:"20 days in advance at 11 AM", advance_period:20, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T11:00:00", { zone: "America/New_York" })},
   {id:46, name:"Una Pizza Napoletana", restaurant_url:"https://www.unapizza.com/", area:"Lower East Side", cuisine:"Pizza", reservation_method:"OpenTable", reservation_link:"https://www.opentable.com/r/una-pizza-napoletana-new-york", available_at:"14 days in advance at 9 AM", advance_period:14, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T09:00:00", { zone: "America/New_York" })},
   {id:47, name:"Din Tai Fung", restaurant_url:"https://www.dintaifungusa.com/", area:"Midtown West", cuisine:"Chinese", reservation_method:"Yelp", reservation_link:"https://www.yelp.com/reservations/din-tai-fung-new-york-3", available_at:"30 days in advance at midnight", advance_period:30, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
   {id:48, name:"Le Café Louis Vuitton", restaurant_url:"https://lecafelvnyc.com/", area:"Midtown East", cuisine:"French", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/le-cafe-louis-vuitton", available_at:"27 days in advance at midnight", advance_period:27, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
-  {id:49, name:"Theodora", restaurant_url:"https://www.theodoranyc.com/", area:"Fort Greene", cuisine:"Mediterranean", reservation_method:"Resy", reservation_link:"https://resy.com/cities/ny/theodora", available_at:"30 days in advance at 9 AM", advance_period:30, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T09:00:00", { zone: "America/New_York" })},
+  {id:49, name:"Theodora", restaurant_url:"https://www.theodoranyc.com/", area:"Fort Greene", cuisine:"Mediterranean", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/theodora", available_at:"30 days in advance at 9 AM", advance_period:30, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T09:00:00", { zone: "America/New_York" })},
   {id:50, name:"Ha's Snack Bar", restaurant_url:"https://www.instagram.com/has_dac_biet/", area:"Lower East Side", cuisine:"Vietnamese", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/has-snack-bar", available_at:"20 days in advance at 12 PM", advance_period:20, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T12:00:00", { zone: "America/New_York" })},
   {id:51, name:"Red Hook Tavern", restaurant_url:"https://www.redhooktavern.com/", area:"Red Hook", cuisine:"American", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/red-hook-tavern", available_at:"14 days in advance at 12 AM", advance_period:13, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
   {id:52, name:"Corner Bar", restaurant_url:"https://cornerbarnyc.com/", area:"Lower East Side", cuisine:"American", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/corner-bar", available_at:"14 days in advance at 9 AM", advance_period:27, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T09:00:00", { zone: "America/New_York" })},
   {id:53, name:"Hillstone", restaurant_url:"https://hillstonerestaurant.com/locations/nyc-parkavenuesouth/", area:"Rose Hill", cuisine:"American", reservation_method:"Own Site", reservation_link:"https://hillstonerestaurant.com/locations/nyc-parkavenuesouth/", available_at:"30 days in advance at 12 AM", advance_period:30, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T00:00:00", { zone: "America/New_York" })},
-  {id:54, name:"Eleven Madison Park", restaurant_url:"https://www.elevenmadisonpark.com/", area:"Flatiron", cuisine:"New American", reservation_method:"Resy", reservation_link:"https://resy.com/cities/ny/eleven-madison-park", available_at:"First of previous month at 10 AM (through end of next month)", advance_period:1, advance_unit: "months", advance_type: "first_of_month", time: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
+  {id:54, name:"Eleven Madison Park", restaurant_url:"https://www.elevenmadisonpark.com/", area:"Flatiron", cuisine:"New American", reservation_method:"Resy", reservation_link:"https://resy.com/cities/new-york-ny/venues/eleven-madison-park", available_at:"First of previous month at 10 AM (through end of next month)", advance_period:1, advance_unit: "months", advance_type: "first_of_month", time: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
   {id:55, name:"Per Se", restaurant_url:"https://thomaskeller.com/perseny/", area:"Columbus Circle", cuisine:"French", reservation_method:"Tock", reservation_link:"https://www.exploretock.com/perse", available_at:"First of previous month at 10 AM (through end of next month)", advance_period:1, advance_unit: "months", advance_type: "first_of_month", time: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
   {id:56, name:"Polo Bar", restaurant_url:"https://www.ralphlauren.com/global-polo-bar", area:"Midtown East", cuisine:"American", reservation_method:"Phone", reservation_link:"tel:+1-212-207-8562", available_at:"30 days in advance at 10 AM", advance_period:30, advance_unit: "days", advance_type: "days_advance", time: DateTime.fromISO("1970-01-01T10:00:00", { zone: "America/New_York" })},
 ]; 
@@ -77,6 +77,8 @@ var DateTime = luxon.DateTime;
       };
 
 
+    var tableContainer = document.querySelector("#restaurant-data");
+    if (tableContainer) {
     var table = new Tabulator("#restaurant-data", {
       data:tabledata, //load initial data into table
       layout:"fitColumns",
@@ -114,24 +116,29 @@ var DateTime = luxon.DateTime;
         {column:"name", dir:"asc"}, //sort by this first
       ],
     });
+    }
 
+    if (tableContainer) {
     tabledata.sort((a, b) => {
       if (a.name < b.name) return -1;
       if (a.name > b.name) return 1;
       return 0;
     });
+    }
 
 // Populate restaurant select options
 const select = document.getElementById("restaurantSelect");
 
 
 
+if (select) {
 tabledata.forEach(r => {
   const option = document.createElement("option");
   option.value = r.name;
   option.text = r.name;
   select.appendChild(option);
 });
+}
 
 
 // Handle form submit
@@ -139,7 +146,9 @@ const form = document.querySelector("form");
 const result = document.getElementById("calculator-result");
 
 
-document.getElementById("submit").addEventListener("click", () => {
+const submitBtn = document.getElementById("submit");
+if (submitBtn && select && result) {
+submitBtn.addEventListener("click", () => {
 
   const existingButtons = document.querySelectorAll('add-to-calendar-button');
   Array.from(existingButtons).forEach(button => {
@@ -206,3 +215,4 @@ document.getElementById("submit").addEventListener("click", () => {
 }
 
 });
+}
