@@ -16,8 +16,8 @@ reservation date, then calculate when reservations open.
 
 ```
 NYC_RSVPs/
-├── index.html                                    # Main page
-├── reservation-open-date-calculator.html         # Calculator page  
+├── index.html                                   # Main page
+├── reservation-open-date-calculator.html        # Calculator page  
 ├── why-timing-reservations-is-so-hard.html      # Blog post page
 ├── assets/
 │   ├── icons/                                   # Favicons & app icons
@@ -30,7 +30,7 @@ NYC_RSVPs/
 ├── config/
 │   ├── site.webmanifest                         # Web app manifest
 │   ├── browserconfig.xml                        # Microsoft browser config
-│   └── vercel.json                              # Vercel deployment config
+├── vercel.json                                  # Vercel deployment config
 └── README.md
 ```
 
