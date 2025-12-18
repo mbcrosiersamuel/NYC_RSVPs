@@ -1,3 +1,9 @@
 {
-    "cleanUrls": true
+    "cleanUrls": true,
+    "rewrites": [
+      {
+        "source": "/logo.svg",
+        "destination": "/assets/icons/logo.svg"
+      }
+    ]
   }
