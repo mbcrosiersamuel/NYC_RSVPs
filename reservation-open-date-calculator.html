@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reservation Open Date Calculator</title>
   <meta name="description"
     content="Calculate what date and time reservations open for popular New York City restaurants. Set calendar reminders for Resy.">
@@ -37,57 +36,67 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  </br>
-  <h1>NYC RSVPs</h1>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <h1><a href="index.html" style="color: inherit; text-decoration: none;">NYC RSVPs</a></h1>
+      <p class="site-subtitle">A reference guide for when reservations are released at popular New York City restaurants.</p>
+      <nav aria-label="Main navigation">
+        <ul class="nav-bar">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item nav-item-active"><a href="reservation-open-date-calculator.html" aria-current="page">RSVP Open Date Calculator</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <div class="subdescription">A reference guide for when reservations are released at popular New York City restaurants.
-  </div>
+  <main id="main-content">
+    <div class="container">
+      <h2>Reservation Open Date Calculator</h2>
+      <p class="section-desc">Input your desired restaurant and date to calculate when reservations will open for booking.</p>
 
-  <hr />
-  <ul class="nav-bar">
-    <li class="nav-item"><a href="index.html">Home</a></li>
-    <li class="nav-item nav-item-active"><a>RSVP Open Date Calculator</a></li>
-    <!-- <li><a href="suggest-a-restaurant.html">Suggest a Restaurant</a></li> -->
-  </ul>
+      <div class="calculator-card">
+        <form>
+          <label>
+            <span>Restaurant</span>
+            <select id="restaurantSelect" class="calculator-selector"></select>
+          </label>
+          <label>
+            <span>Ideal Reservation Date</span>
+            <input type="date" class="calculator-selector" id="dateInput">
+          </label>
+          <button type="button" id="submit" class="calculator-selector">Check When Reservations Open</button>
+        </form>
+      </div>
 
+      <div id="calculator-result" class="result-card" aria-live="polite" role="status"></div>
 
-  <hr />
-  </br>
+      <div class="calculator-notes" style="margin-top: 20px;">
+        <b>Please note that restaurants regularly change their reservation release schedules, so accuracy is not 100% guaranteed.</b>
+        If something looks wrong, please <a href="mailto:hi@nycrsvps.com">reach out</a>.
+        You can also read more about what makes reservation timing so tricky <a href="why-timing-reservations-is-so-hard.html">here</a>.
+      </div>
 
-  <h2>Reservation Open Date Calculator</h2>
-  <div class="subdescription">Input your desired restaurant and date to calculate when reservations will open for
-    booking.</div>
-  <div class="subdescription font-10px"><b>Please note that restaurants regularly change their reservation release
-      schedules, so accuracy is not 100% guaranteed.</b> If something looks wrong, please <a
-      href="mailto:hi@nycrsvps.com">reach out</a>.</div>
-  <div class="subdescription font-10px"> You can also read more about what makes reservation timing so tricky <a
-      href="why-timing-reservations-is-so-hard.html">here</a>! </div>
-  </br>
-  <form>
-    <label>
-      Restaurant:
-      <!-- Options populated from restaurant data -->
-      <select id="restaurantSelect" class="calculator-selector"></select>
-    </label>
-    </br>
-    <label>
-      Ideal Reservation Date:
-      <input type="date" class="calculator-selector" id="dateInput">
-    </label>
-    </br>
-    <button type="button"  id="submit" class="calculator-selector">Check When Reservations Open</button>
-  </form>
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      <script src="js/config.js"></script>
+      <script src="js/script.js"></script>
+    </div>
+  </main>
 
-  <div id="calculator-result"></div>
-  <script src="js/script.js"></script>
-
-  </br>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:hi@nycrsvps.com">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

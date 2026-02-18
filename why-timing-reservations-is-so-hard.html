@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Why Timing Reservations is So Hard</title>
-  <meta name=" description"
+  <meta name="description"
     content="Why it's so hard to know exactly when reservations will open at top New York City restaurants">
 
   <link rel="stylesheet" href="css/style.css">
@@ -27,138 +26,151 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  </br>
-  <h1>NYC RSVPs</h1>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <h1><a href="index.html" style="color: inherit; text-decoration: none;">NYC RSVPs</a></h1>
+      <p class="site-subtitle">A reference guide for when reservations are released at popular New York City restaurants.</p>
+      <nav aria-label="Main navigation">
+        <ul class="nav-bar">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="reservation-open-date-calculator.html">RSVP Open Date Calculator</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  <div class="subdescription">A reference guide for when reservations are released at popular New York City restaurants.</div>
+  <main id="main-content">
+    <div class="container">
+      <h2>Why Timing Reservations is Tricky</h2>
 
-  <hr />
-  <ul class="nav-bar">
-    <li class="nav-item"><a href="index.html">Home</a></li>
-    <li class="nav-item"><a href="reservation-open-date-calculator.html">RSVP Open Date Calculator</a></li>
-  </ul>
+      <div class="content-body">
+        <p>As I was working on this site, I was struck often by how difficult it was to compile and verify the reservation
+          opening date & time for each restaurant. I had a few sources of available data:</p>
+        <ul>
+          <li>Information posted on restaurants' websites or Resy descriptions</li>
+          <li>Third party websites (e.g. Eater) and social media (e.g. Reddit)</li>
+          <li>Personal experience (e.g. making reservations in the past, checking Resy waiting for
+            reservations to open)</li>
+        </ul>
+        <p>
+          Seemingly, with so many potential sources, this aggregation would be easy. Or so I thought, until I actually tried
+          it! More on each of those three sources (& their challenges/limitations) below:
+        </p>
 
+        <h3>Restaurants' Websites or Reservation Pages</h3>
+        <p>
+          Since this data is shared by the restaurants themselves, my initial assumption was that this was the best type of
+          data to use, where possible.</p>
+        <p>Availability is the first issue - only a fraction (maybe 20% or so) of the restaurants I tried to gather data
+          from actually published this explicitly. But what was most surprising to me about this data was that the published
+          times/dates that reservations would open, <b><em>as shared by the restaurants themselves, were often
+              wrong!</em></b> As I learned more, I determined that there are a handful of different reasons behind this,
+          depending on the situation.
+        </p>
 
-  <hr />
-  </br>
+        <h4>Outdated Data</h4>
+        <p>
+          This one is simple, but sometimes restaurants just don't update their sites when they make changes.</p>
+        <p>Take, for example, Adda. <a href="https://resy.com/cities/ny/adda">Their Resy page</a> says, super clearly, that
+          reservations are available 60 days in advance:
+        </p>
+        <img src="assets/images/adda-60.png" alt="Adda's Resy page showing reservations available 60 days in advance" class="content-image">
+        <p>
+          Easy enough! Since 60 days is ~2 months, when I check Adda's Resy page on January 25th, I expect that reservations
+          should be open through late March. But wait a second:
+        </p>
+        <img src="assets/images/adda-march.png" alt="Adda's Resy page showing reservations not available in March" class="content-image">
+        <p>On January 25th, the entire month of March shows as unreleased, no reservations anywhere to be seen. The latest
+          open reservation is for February 23rd, or 29 days in advance. The 60 day number came from Adda itself, but it's
+          clear that it doesn't match the reality that you'll need to snag a reservation.</p>
 
-  <h2> Why Timing Reservations is Tricky </h2>
-  <div>
-    <p>As I was working on this site, I was struck often by how difficult it was to compile and verify the reservation
-      opening date & time for each restaurant. I had a few sources of available data:
-    <ul>
-      <li>Information posted on restaurants' websites or Resy descriptions</li>
-      <li>Third party websites (e.g. Eater) and social media (e.g. Reddit)</li>
-      <li>Personal experience (e.g. making reservations in the past, checking Resy waiting for
-        reservations to open)</li>
-    </ul>
-    </p>
-    <p>
-      Seemingly, with so many potential sources, this aggregation would be easy. Or so I thought, until I actually tried
-      it! More on each of those three sources (& their challenges/limitations) below:
-    </p>
-    <h3>Restaurants' Websites or Reservation Pages</h3>
-    <p>
-      Since this data is shared by the restaurants themselves, my initial assumption was that this was the best type of
-      data to use, where possible.</p>
-    <p>Availability is the first issue - only a fraction (maybe 20% or so) of the restaurants I tried to gather data
-      from actually published this explicitly. But what was most surprising to me about this data was that the published
-      times/dates that reservations would open, <b><em>as shared by the restaurants themselves, were often
-          wrong!</em></b> As I learned more, I determined that there are a handful of different reasons behind this,
-      depending on the situation.
-    </p>
-    <h4>Outdated Data</h4>
-    <p>
-      This one is simple, but sometimes restaurants just don't update their sites when they make changes.</p>
-    <p>Take, for example, Adda. <a href="https://resy.com/cities/ny/adda">Their Resy page</a> says, super clearly, that
-      reservations are available 60 days in advance:
-    </p>
-    <img src="assets/images/adda-60.png" alt="Adda's Resy page showing reservations available 60 days in advance" class="content-image">
-    <p>
-      Easy enough! Since 60 days is ~2 months, when I check Adda's Resy page on January 25th, I expect that reservations
-      should be open through late March. But wait a second:
-    </p>
-    <img src="assets/images/adda-march.png" alt="Adda's Resy page showing reservations not available in March " class="content-image">
-    <p> On January 25th, the entire month of March shows as unreleased, no reservations anywhere to be seen. The latest
-      open reservation is for February 23rd, or 29 days in advance. The 60 day number came from Adda itself, but it's
-      clear that it doesn't match the reality that you'll need to snag a reservation.</p>
-    </p>
-    <h4>Defining 'In Advance'</h4>
-    <p>While some reservation info shared by restaurants is wrong or outdated, another issue involved in taking
-      restaurants at their word is the concept of reserving a table 'X days in advance.'</p>
-    <p>'X Days in Advance' can actually be fairly tricky to conceptualize and then calculate. As a hypothetical, if
-      reservations for a restaurant open at midnight on Monday night/Tuesday morning, and reservations open '1 day in
-      advance', then at 12:01 would reservations be open through the end of the day on <em>Tuesday</em> or through the
-      end of the day on <em>Wednesday</em>?</p>
-    <p>It's not totally obvious, and it's clear that not all restaurants accounted for the ambiguity in the same way.
-    </p>
-    <p> Take, for example, two restaurants, Don Angie and Rubirosa, that both kindly publish when their reservations
-      open: In both cases, 7 days in advance.</p>
-    <p>Here's Don Angie's guidance:</p>
-    <img src="assets/images/don-angie-banner.png" alt="Don Angie website banner: reservations open 7 days in advance" class="content-image">
-    <p>And Rubirosa's:</p>
-                     <img src="assets/images/rubirosa.png"
-      alt="Rubirosa Resy description: reservations open 7 days in advance, through 2/1 as of 1/25" class="content-image">
-    <p>You'll notice that Rubirosa reservations are open through February 1st, as of 6 pm ET on January 25th. At any
-      time between 9 am (when Don Angie opens reservations) and midnight (when Rubirosa opens reservations), we should
-      expect reservation availability to be the same, since both open 7 days in advance.</p>
-    <p>But when we look at Don Angie's availability, it's a different story:</p>
-    <img src="assets/images/don-angie-feb-1.png" alt="Don Angie reservations not available on February 1 as of 1/25" class="content-image">
+        <h4>Defining 'In Advance'</h4>
+        <p>While some reservation info shared by restaurants is wrong or outdated, another issue involved in taking
+          restaurants at their word is the concept of reserving a table 'X days in advance.'</p>
+        <p>'X Days in Advance' can actually be fairly tricky to conceptualize and then calculate. As a hypothetical, if
+          reservations for a restaurant open at midnight on Monday night/Tuesday morning, and reservations open '1 day in
+          advance', then at 12:01 would reservations be open through the end of the day on <em>Tuesday</em> or through the
+          end of the day on <em>Wednesday</em>?</p>
+        <p>It's not totally obvious, and it's clear that not all restaurants accounted for the ambiguity in the same way.</p>
+        <p>Take, for example, two restaurants, Don Angie and Rubirosa, that both kindly publish when their reservations
+          open: In both cases, 7 days in advance.</p>
+        <p>Here's Don Angie's guidance:</p>
+        <img src="assets/images/don-angie-banner.png" alt="Don Angie website banner: reservations open 7 days in advance" class="content-image">
+        <p>And Rubirosa's:</p>
+        <img src="assets/images/rubirosa.png"
+          alt="Rubirosa Resy description: reservations open 7 days in advance, through 2/1 as of 1/25" class="content-image">
+        <p>You'll notice that Rubirosa reservations are open through February 1st, as of 6 pm ET on January 25th. At any
+          time between 9 am (when Don Angie opens reservations) and midnight (when Rubirosa opens reservations), we should
+          expect reservation availability to be the same, since both open 7 days in advance.</p>
+        <p>But when we look at Don Angie's availability, it's a different story:</p>
+        <img src="assets/images/don-angie-feb-1.png" alt="Don Angie reservations not available on February 1 as of 1/25" class="content-image">
 
-    <p>Despite identical messaging on their sites, reservations for Don Angie are open for one fewer day than
-      reservations at Rubirosa. Neither restuarant is wrong, or lying, they're just using different definitions for '7
-      Days in Advance.' That's also why, looking at the 'days in advance' in the table, you see a lot of wacky numbers,
-      like 6 and 29, alongside rounder numbers, like 7 and 30. Restaurants defined 'in advance' differently in practice,
-      so the standardized data needs to reflect that, even if it doesn't align perfectly with the website copy.</p>
-    <h4>Mondays and Holiday Parties</h4>
-    <p>For the sake of simplicity, my calculator and data also assumes that every restaurant will be open on every
-      night. This isn't true, and is a very real limitation of the calculator as it exists today. Adding in regular days
-      that restaurants are closed (e.g. that a restaurant is never open on Mondays) would likely be a good additional
-      feature for me to add. What's much more challenging is to account for special events like restaurant buy-outs or
-      ticketed holiday dinners.</p>
-    <p> To pick on Don Angie again (sorry Don Angie), their website currently advertises that they'll be closed on two
-      upcoming days for private events.</p>
-    <img src="assets/images/don-angie-event.png" alt="Don Angie event closure website popup" class="content-image">
-    <p>There's no mention of this on Resy, and many restuarants might not mention closures anywhere at all - they just
-      don't permit reservations on that evening. This is harder to account for, and is unfortunately just a known risk
-      of playing the Resy game.</p>
-    <h3>Third Party Websites + Social Media</h3>
-    <p>Since restaurant data was often incomplete or not quite right, I also looked at food magazines, reddit posts, and
-      more, to find leads on when reservations opened for diffrernet restaurants </p>
-    <p>These are great data sources, and people are very generous in sharing their knowledge, but they suffer from a lot
-      of the same issues: content gets out of date, or people make mistakes. I used a lot of third party data as an
-      initial hypothesis, but used a 'trust but verify' strategy, which leads me to...</p>
-    <h3>Personal Experience</h3>
-    <p>Given all the considerations above, ultimately, a lot of this data either came from, or was verified by, me
-      sitting around at 8:57 am with a bunch of reservation pages open, checking the data accuracy, and then at 9:03 am,
-      refreshing everything and checking again. </p>
-    <p> Is this programmatic or scalable? Absolutely not! But did I do my best to ensure that the data was accurate (for
-      now)? Yes! There are probably ways that I could have done this differently, perhaps via some sort of Resy bot or
-      API access, but the whole point of this site was to offer an alternative resource for folks who don't use bots or
-      buy reservations on appointment trader, and are doing the good, old-fashioned, refresh-at-the-right-time tactic.
-    </p>
-    <h2>The all important caveat</h2>
-    <p>The point of all this context is twofold:</p>
-    <ol>
-      <li>First, to clarify that even if the data on this site doesn't match what you see on a restaurant's website or
-        on Reddit doesn't mean it's innacurate!</li>
-      <li>To emphasize that this data is ultimately imperfect and subject to innacuracies for a wide range of reasons,
-        from restaurant closures to typos to policy changes, so please use it as a guide and a handy calculator tool,
-        but know that it might not always be perfect. If something looks wrong (or you have a restaurant to add), don't
-        hesitate to <a href="mailto:hi@nycrsvps.com">say something.</a></li>
-    </ol>
-    <p> That said, it is the reservation game after all - these are hard-to-get reservations at coveted restaurants in
-      New York. So with that, best of luck reserving a meal you're excited for!</p>
-  </div>
+        <p>Despite identical messaging on their sites, reservations for Don Angie are open for one fewer day than
+          reservations at Rubirosa. Neither restaurant is wrong, or lying, they're just using different definitions for '7
+          Days in Advance.' That's also why, looking at the 'days in advance' in the table, you see a lot of wacky numbers,
+          like 6 and 29, alongside rounder numbers, like 7 and 30. Restaurants defined 'in advance' differently in practice,
+          so the standardized data needs to reflect that, even if it doesn't align perfectly with the website copy.</p>
 
+        <h4>Mondays and Holiday Parties</h4>
+        <p>For the sake of simplicity, my calculator and data also assumes that every restaurant will be open on every
+          night. This isn't true, and is a very real limitation of the calculator as it exists today. Adding in regular days
+          that restaurants are closed (e.g. that a restaurant is never open on Mondays) would likely be a good additional
+          feature for me to add. What's much more challenging is to account for special events like restaurant buy-outs or
+          ticketed holiday dinners.</p>
+        <p>To pick on Don Angie again (sorry Don Angie), their website currently advertises that they'll be closed on two
+          upcoming days for private events.</p>
+        <img src="assets/images/don-angie-event.png" alt="Don Angie event closure website popup" class="content-image">
+        <p>There's no mention of this on Resy, and many restaurants might not mention closures anywhere at all - they just
+          don't permit reservations on that evening. This is harder to account for, and is unfortunately just a known risk
+          of playing the Resy game.</p>
 
+        <h3>Third Party Websites + Social Media</h3>
+        <p>Since restaurant data was often incomplete or not quite right, I also looked at food magazines, reddit posts, and
+          more, to find leads on when reservations opened for different restaurants.</p>
+        <p>These are great data sources, and people are very generous in sharing their knowledge, but they suffer from a lot
+          of the same issues: content gets out of date, or people make mistakes. I used a lot of third party data as an
+          initial hypothesis, but used a 'trust but verify' strategy, which leads me to...</p>
+
+        <h3>Personal Experience</h3>
+        <p>Given all the considerations above, ultimately, a lot of this data either came from, or was verified by, me
+          sitting around at 8:57 am with a bunch of reservation pages open, checking the data accuracy, and then at 9:03 am,
+          refreshing everything and checking again.</p>
+        <p>Is this programmatic or scalable? Absolutely not! But did I do my best to ensure that the data was accurate (for
+          now)? Yes! There are probably ways that I could have done this differently, perhaps via some sort of Resy bot or
+          API access, but the whole point of this site was to offer an alternative resource for folks who don't use bots or
+          buy reservations on appointment trader, and are doing the good, old-fashioned, refresh-at-the-right-time tactic.</p>
+
+        <h2>The all important caveat</h2>
+        <p>The point of all this context is twofold:</p>
+        <ol>
+          <li>First, to clarify that even if the data on this site doesn't match what you see on a restaurant's website or
+            on Reddit doesn't mean it's inaccurate!</li>
+          <li>To emphasize that this data is ultimately imperfect and subject to inaccuracies for a wide range of reasons,
+            from restaurant closures to typos to policy changes, so please use it as a guide and a handy calculator tool,
+            but know that it might not always be perfect. If something looks wrong (or you have a restaurant to add), don't
+            hesitate to <a href="mailto:hi@nycrsvps.com">say something.</a></li>
+        </ol>
+        <p>That said, it is the reservation game after all - these are hard-to-get reservations at coveted restaurants in
+          New York. So with that, best of luck reserving a meal you're excited for!</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:hi@nycrsvps.com">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+      </div>
+    </div>
+  </footer>
 </body>
-
 
 </html>
