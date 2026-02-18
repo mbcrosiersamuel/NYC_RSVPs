@@ -59,25 +59,25 @@ async function init() {
                 urlField:"restaurant_url",
                 target:"_blank",
             }, headerFilter:"input", headerFilterPlaceholder:"Search for a Restaurant"},
-        {title:"Neighborhood", field:"area", sorter:"string", hozAlign:"center",  minWidth:150, responsive:5, headerFilter:"input", headerFilterPlaceholder:"e.g. Soho"},
-        {title:"Cuisine", field:"cuisine", sorter:"string", hozAlign:"center", minWidth:150, responsive:5, headerFilter:"input", headerFilterPlaceholder:"e.g. Italian"},
-        {title:"Reservation Method", field:"reservation_method", formatter:"link", sorter:"string",  minWidth:150,responsive:4, hozAlign:"center", formatterParams:{
+        {title:"Neighborhood", field:"area", sorter:"string", hozAlign:"center",  minWidth:120, responsive:5, headerFilter:"input", headerFilterPlaceholder:"e.g. Soho"},
+        {title:"Cuisine", field:"cuisine", sorter:"string", hozAlign:"center", minWidth:110, responsive:5, headerFilter:"input", headerFilterPlaceholder:"e.g. Italian"},
+        {title:"Reservation Method", field:"reservation_method", formatter:"link", sorter:"string",  minWidth:120,responsive:4, hozAlign:"center", formatterParams:{
                 labelField:"reservation_method",
                 urlField:"reservation_link",
                 target:"_blank",
             }, headerFilter:"input", headerFilterPlaceholder:"e.g. Resy, Phone"},
-        {title:"Days in Advance", field:"advance_period", sorter:"number", hozAlign:"center", minWidth:150, responsive:2, formatter:function(cell, formatterParams, onRendered){
+        {title:"Days in Advance", field:"advance_period", sorter:"number", hozAlign:"center", minWidth:130, responsive:2, formatter:function(cell, formatterParams, onRendered){
           var data = cell.getData();
           if (data.advance_type === 'first_of_month') {
             return "1st of Prev. Month";
           }
           return data.advance_period + " " + data.advance_unit;
         }},
-        {title:"Time (EST)", field:"time", hozAlign:"center", sorter:"datetime", minWidth:150, responsive:2, formatter:"datetime", formatterParams:{
+        {title:"Time (EST)", field:"time", hozAlign:"center", sorter:"datetime", minWidth:110, responsive:2, formatter:"datetime", formatterParams:{
           outputFormat:"h:mm a",
           invalidPlaceholder:"(invalid date)",
         }},
-        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", minWidth:250, responsive:1, mutator:customMutator, formatter:"datetime", formatterParams:{
+        {title:"Latest Open RSVP", field:"openres", sorter:"datetime", hozAlign:"center", minWidth:200, responsive:1, mutator:customMutator, formatter:"datetime", formatterParams:{
           outputFormat:"DDDD",
           invalidPlaceholder:"Invalid date",
 }},
@@ -106,6 +106,11 @@ async function init() {
 
   const submitBtn = document.getElementById("submit");
   if (submitBtn && select && result) {
+    if (form) {
+      form.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") { e.preventDefault(); submitBtn.click(); }
+      });
+    }
     submitBtn.addEventListener("click", () => {
 
       const existingButtons = document.querySelectorAll('add-to-calendar-button');
@@ -164,8 +169,8 @@ async function init() {
         var descText = isPhone ? `Call to reserve: ${restaurantData.reservation_link}` : `[url] ${linkForDesc}|Booking Link[/url]`;
         button.setAttribute('description', descText);
 
-        // Append
-        document.body.appendChild(button);
+        // Append inside result area
+        result.parentNode.insertBefore(button, result.nextSibling);
       }
     });
   }
