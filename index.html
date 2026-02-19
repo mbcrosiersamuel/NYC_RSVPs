@@ -9,8 +9,11 @@
     content="A guide to what time popular New York City restaurants like Don Angie, Carbone, and more, open their reservations for future dates. Don't miss the chance to snag your dream reservation!">
 
   <link href="https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet">
-  <script type="text/javascript" src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
-  <script src="js/luxon.js"></script>
+  <script defer src="https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/script.js"></script>
   <link rel="stylesheet" href="css/style.css">
 
   <script>
@@ -37,7 +40,7 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -60,11 +63,15 @@
       <h2>Restaurant-Level Data</h2>
       <p class="section-desc">Reservation release info for select New York City restaurants: booking platforms and links, reservation release schedules, and date of the latest currently available reservation.</p>
 
-      <div id="restaurant-data"></div>
-
-      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-      <script src="js/config.js"></script>
-      <script src="js/script.js"></script>
+      <div id="restaurant-data">
+        <div class="loading-skeleton" aria-label="Loading restaurant data">
+          <div class="skeleton-row"></div>
+          <div class="skeleton-row"></div>
+          <div class="skeleton-row"></div>
+          <div class="skeleton-row"></div>
+          <div class="skeleton-row"></div>
+        </div>
+      </div>
 
       <div id="disclaimer">
         <p><b>Please note that restaurants regularly change their reservation

@@ -37,7 +37,7 @@ var customMutator = function(value, data, type, params, component){
 async function init() {
   var { data: rows, error } = await supabaseClient
     .from('restaurants')
-    .select('*')
+    .select('name,restaurant_url,area,cuisine,reservation_method,reservation_link,advance_period,advance_unit,advance_type,release_time')
     .order('name');
 
   if (error) {
