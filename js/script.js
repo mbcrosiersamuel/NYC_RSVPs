@@ -34,14 +34,37 @@ var customMutator = function(value, data, type, params, component){
     return cutoff
   };
 
-async function init() {
-  var { data: rows, error } = await supabaseClient
+async function fetchRestaurants() {
+  var CACHE_KEY = 'restaurants_cache';
+  var CACHE_TTL = 1000 * 60 * 60; // 1 hour
+
+  try {
+    var cached = localStorage.getItem(CACHE_KEY);
+    if (cached) {
+      var parsed = JSON.parse(cached);
+      if (Date.now() - parsed.timestamp < CACHE_TTL) return parsed.data;
+    }
+  } catch (e) { /* localStorage unavailable or corrupt — fall through to fetch */ }
+
+  var { data, error } = await supabaseClient
     .from('restaurants')
     .select('name,restaurant_url,area,cuisine,reservation_method,reservation_link,advance_period,advance_unit,advance_type,release_time')
     .order('name');
 
-  if (error) {
-    console.error('Error fetching restaurants:', error);
+  if (error) return null;
+
+  try {
+    localStorage.setItem(CACHE_KEY, JSON.stringify({ data: data, timestamp: Date.now() }));
+  } catch (e) { /* quota exceeded or unavailable — not critical */ }
+
+  return data;
+}
+
+async function init() {
+  var rows = await fetchRestaurants();
+
+  if (!rows) {
+    console.error('Error fetching restaurants');
     return;
   }
 
