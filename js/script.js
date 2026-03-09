@@ -34,6 +34,33 @@ var customMutator = function(value, data, type, params, component){
     return cutoff
   };
 
+// Calculate when reservations open for a given restaurant + desired date
+// Returns { alreadyOpen, bookingDate, restaurant } or { error }
+function calculateReservationOpenDate(restaurantData, desiredDateStr) {
+  var desiredReservationDate = DateTime.fromISO(desiredDateStr).setZone('America/New_York');
+
+  if (!desiredReservationDate.isValid) {
+    return { error: "Invalid date format. Use YYYY-MM-DD." };
+  }
+
+  var bookingDate;
+  if (restaurantData.advance_type === 'first_of_month') {
+    var targetMonthFirst = desiredReservationDate.startOf('month');
+    var releaseMonthFirst = targetMonthFirst.minus({ months: restaurantData.advance_period || 0 });
+    bookingDate = releaseMonthFirst.set({ hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
+  } else {
+    bookingDate = desiredReservationDate.minus({ days: restaurantData.advance_period || 0 }).set({ hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
+  }
+
+  var now = DateTime.now().setZone('America/New_York');
+
+  if (now > bookingDate) {
+    return { alreadyOpen: true, bookingDate: bookingDate, restaurant: restaurantData };
+  } else {
+    return { alreadyOpen: false, bookingDate: bookingDate, restaurant: restaurantData };
+  }
+}
+
 async function fetchRestaurants() {
   var CACHE_KEY = 'restaurants_cache';
   var CACHE_TTL = 1000 * 60 * 60; // 1 hour
@@ -156,18 +183,16 @@ async function init() {
         return;
       }
 
-      var bookingDate;
-      if (restaurantData.advance_type === 'first_of_month') {
-        var targetMonthFirst = desiredReservationDate.startOf('month');
-        var releaseMonthFirst = targetMonthFirst.minus({ months: restaurantData.advance_period || 0 });
-        bookingDate = releaseMonthFirst.set({ hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
-      } else {
-        bookingDate = desiredReservationDate.minus({ days: restaurantData.advance_period || 0 }).set({ hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
+      var calc = calculateReservationOpenDate(restaurantData, form.dateInput.value);
+
+      if (calc.error) {
+        result.textContent = calc.error;
+        return;
       }
 
-      const now = DateTime.now().setZone('America/New_York');
+      var bookingDate = calc.bookingDate;
 
-      if (now > bookingDate) {
+      if (calc.alreadyOpen) {
         result.innerText = `>> Reservations at ${restaurantData.name} are already open for your desired date!`;
       } else {
         var userZone = DateTime.local().zoneName;
@@ -194,6 +219,115 @@ async function init() {
 
         // Append inside result area
         result.parentNode.insertBefore(button, result.nextSibling);
+      }
+    });
+  }
+
+  // Register WebMCP tools for browser-based AI agents
+  // Spec uses modelContext; Chrome Canary flag exposes modelContextTesting
+  var mc = navigator.modelContext || navigator.modelContextTesting;
+  if (mc) {
+    mc.registerTool({
+      name: "find_restaurants",
+      description: "Search and filter NYC restaurants tracked by this site. Use this tool when the user wants to find restaurants, browse dining options, or look up reservation details for a specific restaurant.\n\nAll filter parameters are optional and case-insensitive partial matches — combine any number of them to narrow results. When no filters are provided, returns all restaurants.\n\nEach result includes: restaurant name, cuisine, NYC neighborhood, reservation platform (e.g. Resy, OpenTable, Phone), direct booking link, how far in advance reservations open, and the daily release time in Eastern Time.\n\nExamples of when to use this tool:\n- \"What Italian restaurants do you have?\" → { cuisine: \"Italian\" }\n- \"Show me restaurants in the West Village\" → { neighborhood: \"West Village\" }\n- \"What restaurants use Resy?\" → { reservation_method: \"Resy\" }\n- \"Tell me about Don Angie\" → { name: \"Don Angie\" }\n- \"Find Japanese restaurants in Soho\" → { cuisine: \"Japanese\", neighborhood: \"Soho\" }\n\nDo NOT use this tool for:\n- Calculating when reservations open for a specific date (use get_reservation_open_date instead)\n- Finding restaurants not tracked by NYC RSVPs\n- Making or managing actual reservations",
+      inputSchema: {
+        type: "object",
+        properties: {
+          name: { type: "string", description: "Restaurant name to search for. Partial match, case-insensitive. Example: 'carbone', 'Don Angie'" },
+          cuisine: { type: "string", description: "Cuisine type to filter by. Partial match, case-insensitive. Examples: 'Italian', 'Japanese', 'Mexican', 'French'" },
+          neighborhood: { type: "string", description: "NYC neighborhood/area to filter by. Partial match, case-insensitive. Examples: 'West Village', 'Soho', 'Williamsburg', 'Lower East Side'" },
+          reservation_method: { type: "string", description: "Booking platform to filter by. Partial match, case-insensitive. Examples: 'Resy', 'OpenTable', 'Phone', 'Tock'" }
+        }
+      },
+      annotations: { readOnlyHint: true },
+      execute: function(args) {
+        supabaseClient.from('webmcp_events').insert({ tool_name: 'find_restaurants', args: args });
+        var results = tabledata.filter(function(r) {
+          if (args.name && r.name.toLowerCase().indexOf(args.name.toLowerCase()) === -1) return false;
+          if (args.cuisine && r.cuisine && r.cuisine.toLowerCase().indexOf(args.cuisine.toLowerCase()) === -1) return false;
+          if (args.cuisine && !r.cuisine) return false;
+          if (args.neighborhood && r.area && r.area.toLowerCase().indexOf(args.neighborhood.toLowerCase()) === -1) return false;
+          if (args.neighborhood && !r.area) return false;
+          if (args.reservation_method && r.reservation_method && r.reservation_method.toLowerCase().indexOf(args.reservation_method.toLowerCase()) === -1) return false;
+          if (args.reservation_method && !r.reservation_method) return false;
+          return true;
+        });
+
+        return JSON.stringify(results.map(function(r) {
+          var advance = r.advance_type === 'first_of_month'
+            ? '1st of the month, ' + (r.advance_period || 0) + ' month(s) prior'
+            : (r.advance_period || 0) + ' ' + (r.advance_unit || 'days');
+          return {
+            name: r.name,
+            restaurant_url: r.restaurant_url || null,
+            cuisine: r.cuisine || null,
+            neighborhood: r.area || null,
+            reservation_method: r.reservation_method || null,
+            reservation_link: r.reservation_link || null,
+            advance_booking: advance,
+            release_time_et: r.time.toFormat('h:mm a') + ' ET'
+          };
+        }));
+      }
+    });
+
+    mc.registerTool({
+      name: "get_reservation_open_date",
+      description: "Calculate exactly when reservations open for a specific restaurant on a desired date. Use this tool when the user wants to know when to book, when reservations drop, or when to set a reminder for a specific dining date.\n\nReturns one of two outcomes:\n- If reservations are already open: tells the user they can book now and provides the booking link.\n- If reservations are not yet open: returns the exact date and time (in Eastern Time) when reservations will be released, plus the booking link.\n\nThe restaurant_name must match a restaurant tracked by this site. If unsure of the exact name, use find_restaurants first to look it up.\n\nExamples of when to use this tool:\n- \"When do reservations open for Carbone on March 15?\" → { restaurant_name: \"Carbone\", desired_date: \"2026-03-15\" }\n- \"I want to eat at Don Angie on my birthday April 20th\" → { restaurant_name: \"Don Angie\", desired_date: \"2026-04-20\" }\n- \"When should I check Resy for a July 4th dinner at 4 Charles?\" → { restaurant_name: \"4 Charles Prime Rib\", desired_date: \"2026-07-04\" }\n\nDo NOT use this tool for:\n- Browsing or searching for restaurants (use find_restaurants instead)\n- Dates in the past\n- Restaurants not tracked by this site",
+      inputSchema: {
+        type: "object",
+        properties: {
+          restaurant_name: { type: "string", description: "Exact name of the restaurant as it appears on NYC RSVPs. Use find_restaurants first if unsure of the exact name." },
+          desired_date: { type: "string", description: "The date the user wants to dine, in YYYY-MM-DD format. Must be a future date.", format: "date" }
+        },
+        required: ["restaurant_name", "desired_date"]
+      },
+      annotations: { readOnlyHint: true },
+      execute: function(args) {
+        supabaseClient.from('webmcp_events').insert({ tool_name: 'get_reservation_open_date', args: args });
+        var restaurantData = tabledata.find(function(r) {
+          return r.name.toLowerCase() === args.restaurant_name.toLowerCase();
+        });
+
+        if (!restaurantData) {
+          // Try partial match as fallback
+          restaurantData = tabledata.find(function(r) {
+            return r.name.toLowerCase().indexOf(args.restaurant_name.toLowerCase()) !== -1;
+          });
+        }
+
+        if (!restaurantData) {
+          return JSON.stringify({ error: "Restaurant not found. Use find_restaurants to search for the correct name." });
+        }
+
+        var calc = calculateReservationOpenDate(restaurantData, args.desired_date);
+
+        if (calc.error) {
+          return JSON.stringify({ error: calc.error });
+        }
+
+        var bookingLink = restaurantData.reservation_link || null;
+
+        if (calc.alreadyOpen) {
+          return JSON.stringify({
+            restaurant: restaurantData.name,
+            desired_date: args.desired_date,
+            status: "already_open",
+            message: "Reservations are already open for this date. You can book now!",
+            booking_link: bookingLink
+          });
+        } else {
+          var easternTime = restaurantData.time.setZone('America/New_York');
+          return JSON.stringify({
+            restaurant: restaurantData.name,
+            desired_date: args.desired_date,
+            status: "not_yet_open",
+            reservation_opens_on: calc.bookingDate.toFormat('yyyy-MM-dd'),
+            reservation_opens_at: easternTime.toFormat('h:mm a') + ' ET',
+            message: "Reservations for " + restaurantData.name + " on " + args.desired_date + " will open on " + calc.bookingDate.toFormat('MMMM dd, yyyy') + " at " + easternTime.toFormat('h:mm a') + " ET.",
+            booking_link: bookingLink
+          });
+        }
       }
     });
   }
