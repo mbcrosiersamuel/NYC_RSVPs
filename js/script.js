@@ -23,6 +23,20 @@ var customMutator = function(value, data, type, params, component){
       // Logic: find today's month, add 2 months, then subtract 1 day
       var currentMonthFirst = nowET.startOf('month')
       cutoff = currentMonthFirst.plus({ months: 2 }).minus({ days: 1 })
+    } else if (data.advance_type === 'twice_monthly') {
+      // Two drops per month: 1st at release_time opens 16th–end of month,
+      // 15th at release_time opens 1st–15th of next month
+      var day = nowET.day
+      var dropOnFirst = nowET.set({ day: 1, hour: cutoffHour, minute: cutoffMinute })
+      var dropOnFifteenth = nowET.set({ day: 15, hour: cutoffHour, minute: cutoffMinute })
+
+      if (day >= 15 && nowET >= dropOnFifteenth) {
+        cutoff = nowET.plus({ months: 1 }).set({ day: 15 })
+      } else if (nowET >= dropOnFirst) {
+        cutoff = nowET.endOf('month').startOf('day')
+      } else {
+        cutoff = nowET.set({ day: 15 })
+      }
     } else {
       var sameDayCutoff = nowET.set({ hour: cutoffHour, minute: cutoffMinute })
       cutoff = nowET.plus({ days: (data.advance_period || 0) - 1 }).set({ hour: cutoffHour, minute: cutoffMinute })
@@ -48,6 +62,14 @@ function calculateReservationOpenDate(restaurantData, desiredDateStr) {
     var targetMonthFirst = desiredReservationDate.startOf('month');
     var releaseMonthFirst = targetMonthFirst.minus({ months: restaurantData.advance_period || 0 });
     bookingDate = releaseMonthFirst.set({ hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
+  } else if (restaurantData.advance_type === 'twice_monthly') {
+    // Desired 16th–end of month → opens on 1st of same month
+    // Desired 1st–15th → opens on 15th of previous month
+    if (desiredReservationDate.day >= 16) {
+      bookingDate = desiredReservationDate.set({ day: 1, hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
+    } else {
+      bookingDate = desiredReservationDate.minus({ months: 1 }).set({ day: 15, hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
+    }
   } else {
     bookingDate = desiredReservationDate.minus({ days: restaurantData.advance_period || 0 }).set({ hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
   }
@@ -120,6 +142,9 @@ async function init() {
           var data = cell.getData();
           if (data.advance_type === 'first_of_month') {
             return "1st of Prev. Month";
+          }
+          if (data.advance_type === 'twice_monthly') {
+            return "1st & 15th of Month";
           }
           return data.advance_period + " " + data.advance_unit;
         }},
@@ -256,6 +281,8 @@ async function init() {
         return JSON.stringify(results.map(function(r) {
           var advance = r.advance_type === 'first_of_month'
             ? '1st of the month, ' + (r.advance_period || 0) + ' month(s) prior'
+            : r.advance_type === 'twice_monthly'
+            ? 'Twice monthly (1st & 15th)'
             : (r.advance_period || 0) + ' ' + (r.advance_unit || 'days');
           return {
             name: r.name,
