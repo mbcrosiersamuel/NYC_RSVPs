@@ -279,7 +279,7 @@ init();
       },
       annotations: { readOnlyHint: true },
       execute: async function(args) {
-        supabaseClient.from('webmcp_events').insert({ tool_name: 'find_restaurants', args: args });
+        supabaseClient.from('webmcp_events').insert({ tool_name: 'find_restaurants', args: args }).then(function(){});
         var tabledata = await restaurantsPromise;
         if (!tabledata) {
           return JSON.stringify({ error: "Restaurant data unavailable." });
@@ -328,7 +328,7 @@ init();
       },
       annotations: { readOnlyHint: true },
       execute: async function(args) {
-        supabaseClient.from('webmcp_events').insert({ tool_name: 'get_reservation_open_date', args: args });
+        supabaseClient.from('webmcp_events').insert({ tool_name: 'get_reservation_open_date', args: args }).then(function(){});
         var tabledata = await restaurantsPromise;
         if (!tabledata) {
           return JSON.stringify({ error: "Restaurant data unavailable." });
