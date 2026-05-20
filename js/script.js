@@ -109,15 +109,19 @@ async function fetchRestaurants() {
   return data;
 }
 
-async function init() {
-  var rows = await fetchRestaurants();
+// Kick off the fetch immediately so WebMCP tool executions can await it
+// without waiting on init() / DOM work.
+var restaurantsPromise = fetchRestaurants().then(function(rows) {
+  return rows ? rows.map(transformRow) : null;
+});
 
-  if (!rows) {
+async function init() {
+  var tabledata = await restaurantsPromise;
+
+  if (!tabledata) {
     console.error('Error fetching restaurants');
     return;
   }
-
-  var tabledata = rows.map(transformRow);
 
   var tableContainer = document.querySelector("#restaurant-data");
   if (tableContainer) {
@@ -248,11 +252,20 @@ async function init() {
     });
   }
 
-  // Register WebMCP tools for browser-based AI agents
-  // Spec uses modelContext; Chrome Canary flag exposes modelContextTesting
+}
+
+init();
+
+// Register WebMCP tools for browser-based AI agents.
+// Done synchronously at module load (not inside init()) so the tools are
+// available before fetchRestaurants() resolves — otherwise the extension
+// can snapshot an empty tool list and the model returns MALFORMED_FUNCTION_CALL.
+// Spec uses modelContext; Chrome Canary flag exposes modelContextTesting.
+(function registerWebMCPTools() {
   var mc = navigator.modelContext || navigator.modelContextTesting;
-  if (mc) {
-    mc.registerTool({
+  if (!mc) return;
+
+  mc.registerTool({
       name: "find_restaurants",
       description: "Search and filter NYC restaurants tracked by this site. Use this tool when the user wants to find restaurants, browse dining options, or look up reservation details for a specific restaurant.\n\nAll filter parameters are optional and case-insensitive partial matches — combine any number of them to narrow results. When no filters are provided, returns all restaurants.\n\nEach result includes: restaurant name, cuisine, NYC neighborhood, reservation platform (e.g. Resy, OpenTable, Phone), direct booking link, how far in advance reservations open, and the daily release time in Eastern Time.\n\nExamples of when to use this tool:\n- \"What Italian restaurants do you have?\" → { cuisine: \"Italian\" }\n- \"Show me restaurants in the West Village\" → { neighborhood: \"West Village\" }\n- \"What restaurants use Resy?\" → { reservation_method: \"Resy\" }\n- \"Tell me about Don Angie\" → { name: \"Don Angie\" }\n- \"Find Japanese restaurants in Soho\" → { cuisine: \"Japanese\", neighborhood: \"Soho\" }\n\nDo NOT use this tool for:\n- Calculating when reservations open for a specific date (use get_reservation_open_date instead)\n- Finding restaurants not tracked by NYC RSVPs\n- Making or managing actual reservations",
       inputSchema: {
@@ -265,8 +278,12 @@ async function init() {
         }
       },
       annotations: { readOnlyHint: true },
-      execute: function(args) {
+      execute: async function(args) {
         supabaseClient.from('webmcp_events').insert({ tool_name: 'find_restaurants', args: args });
+        var tabledata = await restaurantsPromise;
+        if (!tabledata) {
+          return JSON.stringify({ error: "Restaurant data unavailable." });
+        }
         var results = tabledata.filter(function(r) {
           if (args.name && r.name.toLowerCase().indexOf(args.name.toLowerCase()) === -1) return false;
           if (args.cuisine && r.cuisine && r.cuisine.toLowerCase().indexOf(args.cuisine.toLowerCase()) === -1) return false;
@@ -310,8 +327,12 @@ async function init() {
         required: ["restaurant_name", "desired_date"]
       },
       annotations: { readOnlyHint: true },
-      execute: function(args) {
+      execute: async function(args) {
         supabaseClient.from('webmcp_events').insert({ tool_name: 'get_reservation_open_date', args: args });
+        var tabledata = await restaurantsPromise;
+        if (!tabledata) {
+          return JSON.stringify({ error: "Restaurant data unavailable." });
+        }
         var restaurantData = tabledata.find(function(r) {
           return r.name.toLowerCase() === args.restaurant_name.toLowerCase();
         });
@@ -357,7 +378,4 @@ async function init() {
         }
       }
     });
-  }
-}
-
-init();
+})();
