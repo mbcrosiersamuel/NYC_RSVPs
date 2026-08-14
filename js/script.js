@@ -37,6 +37,14 @@ var customMutator = function(value, data, type, params, component){
       } else {
         cutoff = nowET.set({ day: 15 })
       }
+    } else if (data.advance_type === 'months_advance') {
+      // Books a fixed number of calendar months ahead by the same date
+      // (e.g. want Sept 12 → opens Aug 12), not a rolling day count.
+      var sameDayCutoffMonths = nowET.set({ hour: cutoffHour, minute: cutoffMinute })
+      cutoff = nowET.plus({ months: (data.advance_period || 0) }).minus({ days: 1 }).set({ hour: cutoffHour, minute: cutoffMinute })
+      if (sameDayCutoffMonths < nowET) {
+        cutoff = cutoff.plus({ days: 1 })
+      }
     } else {
       var sameDayCutoff = nowET.set({ hour: cutoffHour, minute: cutoffMinute })
       cutoff = nowET.plus({ days: (data.advance_period || 0) - 1 }).set({ hour: cutoffHour, minute: cutoffMinute })
@@ -70,6 +78,8 @@ function calculateReservationOpenDate(restaurantData, desiredDateStr) {
     } else {
       bookingDate = desiredReservationDate.minus({ months: 1 }).set({ day: 15, hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
     }
+  } else if (restaurantData.advance_type === 'months_advance') {
+    bookingDate = desiredReservationDate.minus({ months: restaurantData.advance_period || 0 }).set({ hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
   } else {
     bookingDate = desiredReservationDate.minus({ days: restaurantData.advance_period || 0 }).set({ hour: restaurantData.time.hour, minute: restaurantData.time.minute }).setZone('America/New_York', { keepLocalTime: true });
   }
@@ -149,6 +159,9 @@ async function init() {
           }
           if (data.advance_type === 'twice_monthly') {
             return "1st & 15th of Month";
+          }
+          if (data.advance_type === 'months_advance') {
+            return data.advance_period + " " + (data.advance_period === 1 ? "month" : "months");
           }
           return data.advance_period + " " + data.advance_unit;
         }},
