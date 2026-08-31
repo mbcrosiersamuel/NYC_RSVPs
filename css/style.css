@@ -363,8 +363,19 @@ a:hover {
   color: var(--text);
   width: 100%;
   max-width: 400px;
+  min-width: 0;
   transition: border-color var(--transition), box-shadow var(--transition);
   appearance: auto;
+}
+
+/* iOS Safari gives input[type=date] an intrinsic content width and ignores
+   width:100%, so the native date field overflows the card on mobile. Reset the
+   webkit appearance so it behaves like a normal box and honors its container
+   (width:100% / max-width from .calculator-selector); the native date picker
+   still opens on tap. */
+input[type="date"].calculator-selector {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .calculator-selector:focus {
