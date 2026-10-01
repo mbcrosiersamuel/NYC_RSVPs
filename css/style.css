@@ -5,7 +5,7 @@
 /* --- CSS Variables --- */
 :root {
   --teal-900: #1a4a56;
-  --teal-700: #277e96;
+  --teal-700: #23758b;
   --teal-500: #3a9bb5;
   --teal-200: #b4d3db;
   --teal-100: #e8f4f8;
@@ -195,6 +195,8 @@ a:hover {
 /* --- Data Table --- */
 #restaurant-data {
   margin: 0;
+  /* Reserve space so the content below does not jump when the table replaces the skeleton. */
+  min-height: 100vh;
 }
 
 .tabulator {
@@ -284,6 +286,17 @@ a:hover {
   border-right: 3px solid var(--teal-700);
   padding: 8px 16px;
   background: var(--teal-50);
+}
+
+.tabulator-row .tabulator-responsive-collapse .collapse-item {
+  display: flex;
+  gap: 12px;
+  padding: 2px 0;
+}
+
+.tabulator-row .tabulator-responsive-collapse .collapse-label {
+  flex: 0 0 9.5em;
+  font-weight: 700;
 }
 
 .tabulator .tabulator-footer {
