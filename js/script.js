@@ -139,6 +139,32 @@ async function init() {
       data:tabledata,
       layout:"fitColumns",
       responsiveLayout:"collapse",
+      // Default collapse output is a <table> inside role="row", which is invalid ARIA.
+      // Render the hidden columns as a role="cell" list of divs instead.
+      responsiveLayoutCollapseFormatter:function(data){
+        if (!data.length) return "";
+        var list = document.createElement("div");
+        list.setAttribute("role", "cell");
+        list.className = "collapse-list";
+        data.forEach(function(col){
+          var item = document.createElement("div");
+          item.className = "collapse-item";
+          var label = document.createElement("span");
+          label.className = "collapse-label";
+          label.textContent = col.title;
+          var value = document.createElement("span");
+          value.className = "collapse-value";
+          if (col.value instanceof Node) {
+            value.appendChild(col.value);
+          } else {
+            value.innerHTML = col.value;
+          }
+          item.appendChild(label);
+          item.appendChild(value);
+          list.appendChild(item);
+        });
+        return list;
+      },
       columns:[
         {title:"Restaurant", field:"name", formatter:"link", sorter:"string", minWidth:200, responsive:0, formatterParams:{
                 labelField:"name",
@@ -177,6 +203,13 @@ async function init() {
             initialSort:[
         {column:"name", dir:"asc"},
       ],
+    });
+
+    // Tabulator makes its scroll holder focusable, which is not allowed inside role="grid".
+    // The table has no fixed height, so the holder never scrolls and does not need focus.
+    table.on("renderComplete", function(){
+      var holder = tableContainer.querySelector(".tabulator-tableholder");
+      if (holder) holder.removeAttribute("tabindex");
     });
   }
 
