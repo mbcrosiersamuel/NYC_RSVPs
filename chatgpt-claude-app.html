@@ -68,7 +68,7 @@
         <ul>
           <li>Search the restaurants we track by name, cuisine, neighborhood, or booking platform.</li>
           <li>Get the exact date and time that reservations open for a dining date.</li>
-          <li>See up to three options in a card. Each option has a "Book" button and a "Remind me" button.</li>
+          <li>See up to three options in a card. Each option has a "Book" button when booking is open, or a "Remind me" button when it is not.</li>
         </ul>
         <p>"Book" opens the restaurant's booking page (for example, Resy or OpenTable). "Remind me" asks ChatGPT or Claude to set a reminder or calendar event for you. The app itself does not create reminders, book tables, or take payments.</p>
 
@@ -96,7 +96,7 @@
         <ul>
           <li><strong>search_restaurants</strong>: Searches the tracked restaurants by name, cuisine, neighborhood, or booking platform. If you give a dining date, it also returns when reservations open for that date.</li>
           <li><strong>get_reservation_opening</strong>: Calculates the exact date and time that reservations open for one restaurant and one dining date.</li>
-          <li><strong>render_reservation_options</strong>: Shows up to three restaurants in a card, with "Book" and "Remind me" buttons.</li>
+          <li><strong>render_reservation_options</strong>: Shows up to three restaurants in a card, with a "Book" or "Remind me" buttons.</li>
           <li><strong>prepare_reminder</strong>: Prepares the details for a reminder (restaurant, release time, and booking link). ChatGPT or Claude then creates the reminder with its own tools, if it has them.</li>
         </ul>
 
