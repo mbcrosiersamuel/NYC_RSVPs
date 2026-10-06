@@ -24,20 +24,9 @@
       else setTimeout(loadAnalytics, 1);
     });
   </script>
-  <link rel="preconnect" href="https://jguqwrdhbqdpunqmhflt.supabase.co" crossorigin>
-  <link rel="preconnect" href="https://unpkg.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  <title>NYC RSVPs</title>
-  <meta name="description"
-    content="A guide to what time popular New York City restaurants like Don Angie, Carbone, and more, open their reservations for future dates. Don't miss the chance to snag your dream reservation!">
+  <title>Support - NYC RSVPs</title>
+  <meta name="description" content="Get help with NYC RSVPs and the NYC RSVPs app for ChatGPT and Claude.">
 
-  <link rel="preload" as="style" href="https://unpkg.com/tabulator-tables@6.5.2/dist/css/tabulator.min.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://unpkg.com/tabulator-tables@6.5.2/dist/css/tabulator.min.css"></noscript>
-  <script defer src="https://unpkg.com/tabulator-tables@6.5.2/dist/js/tabulator.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/luxon@3.7.2/build/global/luxon.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4"></script>
-  <script defer src="js/config.js?v=20261001"></script>
-  <script defer src="js/script.js?v=20261001"></script>
   <link rel="stylesheet" href="css/style.css?v=20261001">
 
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
@@ -49,8 +38,8 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Lato:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Lato:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap"></noscript>
 </head>
 
 <body>
@@ -61,7 +50,7 @@
       <p class="site-subtitle">A reference guide for when reservations are released at popular New York City restaurants.</p>
       <nav aria-label="Main navigation">
         <ul class="nav-bar">
-          <li class="nav-item nav-item-active"><a href="index.html" aria-current="page">Home</a></li>
+          <li class="nav-item"><a href="index.html">Home</a></li>
           <li class="nav-item"><a href="reservation-open-date-calculator.html">RSVP Open Date Calculator</a></li>
         </ul>
       </nav>
@@ -70,23 +59,37 @@
 
   <main id="main-content">
     <div class="container">
-      <h2>Restaurant-Level Data</h2>
-      <p class="section-desc">Reservation release info for select New York City restaurants: booking platforms and links, reservation release schedules, and date of the latest currently available reservation.</p>
+      <h2>Support</h2>
+      <p class="section-desc">Help for the NYC RSVPs website and the NYC RSVPs app for ChatGPT and Claude.</p>
 
-      <div id="restaurant-data">
-        <div class="loading-skeleton" aria-label="Loading restaurant data">
-          <div class="skeleton-row"></div>
-          <div class="skeleton-row"></div>
-          <div class="skeleton-row"></div>
-          <div class="skeleton-row"></div>
-          <div class="skeleton-row"></div>
-        </div>
-      </div>
+      <div class="content-body">
+        <h3>Contact Us</h3>
+        <p>Email <a href="mailto:hi@nycrsvps.com">hi@nycrsvps.com</a>. We usually reply within 3 business days.</p>
 
-      <div id="disclaimer">
-        <p><b>Please note that restaurants regularly change their reservation
-            release schedules, so accuracy is not 100% guaranteed.</b> If something looks wrong, please <a
-            href="mailto:hi@nycrsvps.com">reach out</a>!</p>
+        <h3>Report Wrong Restaurant Data</h3>
+        <p>Restaurants change their reservation policies often. If a release time, booking platform, or link is wrong, email <a href="mailto:hi@nycrsvps.com?subject=Data%20correction">hi@nycrsvps.com</a>. Include:</p>
+        <ul>
+          <li>The restaurant name.</li>
+          <li>What is wrong, and what you think is correct.</li>
+          <li>A source, if you have one (for example, the restaurant's website or booking page).</li>
+        </ul>
+
+        <h3>Report a Security Issue</h3>
+        <p>Email <a href="mailto:hi@nycrsvps.com?subject=Security">hi@nycrsvps.com</a> with the subject "Security". Describe the issue and the steps to reproduce it. Do not share the details publicly until we reply.</p>
+
+        <h3>Disconnect the App</h3>
+        <p>You can remove the NYC RSVPs app at any time.</p>
+        <ul>
+          <li><strong>ChatGPT:</strong> Go to Settings, then Apps (or Plugins). Find NYC RSVPs and disconnect it.</li>
+          <li><strong>Claude:</strong> Go to Settings, then Connectors. Find NYC RSVPs and disconnect it.</li>
+        </ul>
+
+        <h3>More Information</h3>
+        <ul>
+          <li><a href="chatgpt-claude-app.html">NYC RSVPs app for ChatGPT and Claude</a>: how the app works, with examples and troubleshooting.</li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="tos.html">Terms of Service</a></li>
+        </ul>
       </div>
     </div>
   </main>

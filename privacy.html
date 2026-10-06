@@ -60,14 +60,14 @@
   <main id="main-content">
     <div class="container">
       <h2>Privacy Policy</h2>
-      <p class="section-desc">Last updated: <script>document.write(new Date().toLocaleDateString())</script></p>
+      <p class="section-desc">Last updated: October 6, 2026</p>
 
       <div class="content-body">
         <h3>Overview</h3>
-        <p>We collect basic analytics data to understand how visitors use our site. We do not collect names, email addresses, or any personally identifiable information.</p>
+        <p>This policy covers the nycrsvps.com website and the NYC RSVPs app for ChatGPT and Claude. On the website, we collect basic analytics data to understand how visitors use the site. We do not collect names, email addresses, or any personally identifiable information. The app has its own section below: <a href="#app">NYC RSVPs app for ChatGPT and Claude</a>.</p>
 
         <h3>Information We Collect</h3>
-        <p>We use <strong>PostHog</strong> and <strong>Google Analytics</strong> for website analytics. These services collect the following types of information:</p>
+        <p>The website is hosted by <strong>Vercel</strong>. We use <strong>PostHog</strong> and <strong>Google Analytics</strong> for website analytics. These services collect the following types of information:</p>
         <ul>
           <li>Pages visited</li>
           <li>Visitor counts and traffic patterns</li>
@@ -77,7 +77,7 @@
         <p>This is standard website analytics data similar to that collected by most websites. We use this information to understand site usage and improve our services.</p>
 
         <h3>Information We Do Not Collect</h3>
-        <p>We <strong>do not</strong> collect:</p>
+        <p>On the website, we <strong>do not</strong> collect:</p>
         <ul>
           <li>Names or email addresses</li>
           <li>Precise location data</li>
@@ -86,11 +86,54 @@
           <li>Any data beyond basic analytics</li>
         </ul>
 
+        <h3 id="app">NYC RSVPs app for ChatGPT and Claude</h3>
+        <p>The NYC RSVPs app lets you search the restaurants we track and see when reservations open, from inside ChatGPT or Claude. This section explains what data the app handles.</p>
+
+        <p><strong>What we do not receive.</strong> The app has no account and no sign-in. We do not receive your name, email address, chat history, or messages. ChatGPT or Claude decides which tool inputs to send to the app.</p>
+
+        <p><strong>What we record.</strong> For each tool call, we record:</p>
+        <ul>
+          <li>The tool name and its inputs: search words, filters (such as cuisine, neighborhood, or booking platform), restaurant IDs, dining date, and reminder lead time.</li>
+          <li>The app that made the call and its version (for example, ChatGPT or Claude), and the user-agent string.</li>
+          <li>A one-way hashed (pseudonymous) conversation or session identifier, when the host app provides one.</li>
+          <li>The language or locale setting, and the approximate location (city, region, country), when the host app provides them.</li>
+          <li>The time of the call, how long it took, whether it failed and the error message, and a short result summary (for example, "3 restaurants").</li>
+        </ul>
+        <p>We do not record IP addresses in our database.</p>
+
+        <p><strong>Service providers.</strong> We use these providers to run the app:</p>
+        <ul>
+          <li><strong>Alpic</strong> runs the app server. Alpic processes IP addresses and request metadata in its service logs and usage analytics to operate the service.</li>
+          <li><strong>Supabase</strong> hosts the database that stores the tool-call records above.</li>
+        </ul>
+        <p>The website uses Vercel and Google Analytics, as described above.</p>
+
+        <p><strong>Why we use this data.</strong> We use it to:</p>
+        <ul>
+          <li>Operate and secure the app.</li>
+          <li>Find and fix errors.</li>
+          <li>Improve our restaurant data.</li>
+          <li>Measure total usage, for example the number of searches and active conversations for each host app.</li>
+        </ul>
+        <p>We do not use this data for advertising. We do not sell it. We do not build profiles of users. We do not share it with anyone other than the service providers named in this policy.</p>
+
+        <p><strong>Booking links.</strong> Booking links in the app include <code>utm_source=nycrsvps.com</code>. This lets the restaurant see that the visit came from NYC RSVPs. When you open a booking site, that site's privacy policy applies.</p>
+
+        <p><strong>Retention.</strong> We keep tool-call records for up to 24 months. After that, we delete them or combine them into totals that do not identify a conversation.</p>
+
+        <p><strong>Your choices.</strong></p>
+        <ul>
+          <li>To ask for access to or deletion of your data, email <a href="mailto:hi@nycrsvps.com">hi@nycrsvps.com</a>. Include the approximate date and time you used the app, so we can find the records.</li>
+          <li>You can disconnect the app at any time in your ChatGPT or Claude settings.</li>
+        </ul>
+
+        <p><strong>Audience.</strong> The app is for general audiences. It is not directed at children under 13.</p>
+
         <h3>Cookies</h3>
         <p>Our analytics services (PostHog and Google Analytics) use cookies to track visits and usage patterns. These are standard analytics cookies used to count visitors and analyze site usage. You may disable cookies in your browser settings, though this may affect site functionality.</p>
 
         <h3>Data Sharing and Sale</h3>
-        <p>We do not sell, trade, rent, or otherwise share your information with third parties. We do not share information with advertisers or use it for marketing purposes. Analytics data is processed by PostHog and Google (our analytics providers) and is used solely for understanding site usage. For more information on how Google uses this data, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites that use its services</a>.</p>
+        <p>We do not sell, trade, rent, or otherwise share your information with third parties, except the service providers named in this policy. We do not share information with advertisers or use it for marketing purposes. Analytics data is processed by PostHog and Google (our analytics providers) and is used solely for understanding site usage. For more information on how Google uses this data, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites that use its services</a>.</p>
 
         <h3>Third-Party Links</h3>
         <p>This site contains links to restaurant booking sites (such as Resy, OpenTable, etc.). When you click these links, you will be directed to external sites. We are not responsible for the privacy practices or data handling of these external sites. Please review their privacy policies for more information.</p>
@@ -113,6 +156,8 @@
         <a href="mailto:hi@nycrsvps.com">Contact</a>
         <a href="privacy.html">Privacy</a>
         <a href="tos.html">Terms</a>
+        <a href="support.html">Support</a>
+        <a href="chatgpt-claude-app.html">ChatGPT &amp; Claude App</a>
       </div>
     </div>
   </footer>
