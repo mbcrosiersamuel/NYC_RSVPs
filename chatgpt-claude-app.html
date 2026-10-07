@@ -92,10 +92,9 @@
         </ul>
 
         <h3>Tools</h3>
-        <p>The app has four tools. All of them are read-only. None of them change data or take action outside the chat.</p>
+        <p>The app has three tools. All of them are read-only. None of them change data or take action outside the chat.</p>
         <ul>
-          <li><strong>search_restaurants</strong>: Searches the tracked restaurants by name, cuisine, neighborhood, or booking platform. If you give a dining date, it also returns when reservations open for that date.</li>
-          <li><strong>get_reservation_opening</strong>: Calculates the exact date and time that reservations open for one restaurant and one dining date.</li>
+          <li><strong>search_restaurants</strong>: Searches the tracked restaurants by name, cuisine, neighborhood, or booking platform. It returns each restaurant's release rule; the card calculates exact times.</li>
           <li><strong>render_reservation_options</strong>: Shows restaurants in a card. With a dining date: up to three, with opening times and a "Book" or "Remind me" button. Without a date: up to six, with each release rule.</li>
           <li><strong>prepare_reminder</strong>: Prepares the details for a reminder (restaurant, release time, and booking link). ChatGPT or Claude then creates the reminder with its own tools, if it has them.</li>
         </ul>
