@@ -68,7 +68,7 @@
         <ul>
           <li>Search the restaurants we track by name, cuisine, neighborhood, or booking platform.</li>
           <li>Get the exact date and time that reservations open for a dining date.</li>
-          <li>See up to three options in a card. Each option has a "Book" button when booking is open, or a "Remind me" button when it is not.</li>
+          <li>See restaurants in a card. For a dining date, the card shows up to three options with the exact opening time and a "Book" button (when booking is open) or a "Remind me" button. Without a date, it shows up to six restaurants with how far ahead each one releases tables.</li>
         </ul>
         <p>"Book" opens the restaurant's booking page (for example, Resy or OpenTable). "Remind me" asks ChatGPT or Claude to set a reminder or calendar event for you. The app itself does not create reminders, book tables, or take payments.</p>
 
@@ -84,19 +84,18 @@
 
         <h3>Example Prompts</h3>
         <ul>
-          <li>"When do Don Angie reservations open for Saturday, November 14?"</li>
-          <li>"Find Italian restaurants in the West Village that use Resy."</li>
-          <li>"Which tracked restaurants open reservations on the 1st of the month?"</li>
-          <li>"Remind me when Polo Bar reservations open for December 5."</li>
-          <li>"Show me Korean spots in NoMad and when I can book for next Friday."</li>
+          <li>"When can I book Carbone, 4 Charles Prime Rib, or Don Angie for Saturday, December 12?"</li>
+          <li>"When do Don Angie reservations open for dinner on Saturday, December 12?"</li>
+          <li>"Which Italian restaurants in the West Village do you track, and how far ahead do they book?"</li>
+          <li>"When do Lilia and Semma reservations open for Friday, December 11?"</li>
+          <li>"Which Korean restaurants do you track, and how far ahead do they book?"</li>
         </ul>
 
         <h3>Tools</h3>
-        <p>The app has four tools. All of them are read-only. None of them change data or take action outside the chat.</p>
+        <p>The app has three tools. All of them are read-only. None of them change data or take action outside the chat.</p>
         <ul>
-          <li><strong>search_restaurants</strong>: Searches the tracked restaurants by name, cuisine, neighborhood, or booking platform. If you give a dining date, it also returns when reservations open for that date.</li>
-          <li><strong>get_reservation_opening</strong>: Calculates the exact date and time that reservations open for one restaurant and one dining date.</li>
-          <li><strong>render_reservation_options</strong>: Shows up to three restaurants in a card, with a "Book" or "Remind me" button on each row.</li>
+          <li><strong>search_restaurants</strong>: Searches the tracked restaurants by name, cuisine, neighborhood, or booking platform. It returns each restaurant's release rule; the card calculates exact times.</li>
+          <li><strong>render_reservation_options</strong>: Shows restaurants in a card. With a dining date: up to three, with opening times and a "Book" or "Remind me" button. Without a date: up to six, with each release rule.</li>
           <li><strong>prepare_reminder</strong>: Prepares the details for a reminder (restaurant, release time, and booking link). ChatGPT or Claude then creates the reminder with its own tools, if it has them.</li>
         </ul>
 
