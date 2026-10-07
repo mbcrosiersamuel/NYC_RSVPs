@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Analytics (Google tag, PostHog) load after the page finishes loading so they do not delay rendering. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NT8Q64KEQM');
+    window.addEventListener('load', function () {
+      var loadAnalytics = function () {
+        var g = document.createElement('script');
+        g.async = true;
+        g.src = 'https://www.googletagmanager.com/gtag/js?id=G-NT8Q64KEQM';
+        document.head.appendChild(g);
+
+        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+        posthog.init('phc_VHwJ7cJDAGhPoVGWnvZLbtXdJbNxJO91gtpAYjUC4TY', { api_host: 'https://us.i.posthog.com', ui_host: 'https://us.posthog.com' });
+      };
+      if ('requestIdleCallback' in window) requestIdleCallback(loadAnalytics, { timeout: 3000 });
+      else setTimeout(loadAnalytics, 1);
+    });
+  </script>
+  <title>NYC RSVPs App for ChatGPT and Claude</title>
+  <meta name="description" content="How to use the NYC RSVPs app in ChatGPT and Claude to find when reservations open at popular New York City restaurants.">
+
+  <link rel="stylesheet" href="css/style.css?v=20261001">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="config/site.webmanifest">
+  <link rel="mask-icon" href="assets/icons/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap"></noscript>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <h1><a href="index.html" style="color: inherit; text-decoration: none;">NYC RSVPs</a></h1>
+      <p class="site-subtitle">A reference guide for when reservations are released at popular New York City restaurants.</p>
+      <nav aria-label="Main navigation">
+        <ul class="nav-bar">
+          <li class="nav-item"><a href="index.html">Home</a></li>
+          <li class="nav-item"><a href="reservation-open-date-calculator.html">RSVP Open Date Calculator</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <h2>NYC RSVPs App for ChatGPT and Claude</h2>
+      <p class="section-desc">Find out when reservations open at popular New York City restaurants, from inside ChatGPT or Claude.</p>
+
+      <div class="content-body">
+        <h3>What It Does</h3>
+        <p>The app uses the same restaurant data as this website. You can:</p>
+        <ul>
+          <li>Search the restaurants we track by name, cuisine, neighborhood, or booking platform.</li>
+          <li>Get the exact date and time that reservations open for a dining date.</li>
+          <li>See up to three options in a card. Each option has a "Book" button when booking is open, or a "Remind me" button when it is not.</li>
+        </ul>
+        <p>"Book" opens the restaurant's booking page (for example, Resy or OpenTable). "Remind me" asks ChatGPT or Claude to set a reminder or calendar event for you. The app itself does not create reminders, book tables, or take payments.</p>
+
+        <h3>Who It Is For</h3>
+        <p>People who want a table at a popular New York City restaurant and need to know when to book.</p>
+
+        <h3>How to Add It</h3>
+        <ul>
+          <li><strong>ChatGPT:</strong> Open the plugin directory, search for "NYC RSVPs", and connect it.</li>
+          <li><strong>Claude:</strong> Open the connectors directory, search for "NYC RSVPs", and connect it. You can also add it as a custom connector with this server URL: <code>https://nyc-rsvps-mcp-app-v2-8003af7e.alpic.live/mcp</code></li>
+        </ul>
+        <p>The app does not need an account or sign-in.</p>
+
+        <h3>Example Prompts</h3>
+        <ul>
+          <li>"When do Don Angie reservations open for Saturday, November 14?"</li>
+          <li>"Find Italian restaurants in the West Village that use Resy."</li>
+          <li>"Which tracked restaurants open reservations on the 1st of the month?"</li>
+          <li>"Remind me when Polo Bar reservations open for December 5."</li>
+          <li>"Show me Korean spots in NoMad and when I can book for next Friday."</li>
+        </ul>
+
+        <h3>Tools</h3>
+        <p>The app has four tools. All of them are read-only. None of them change data or take action outside the chat.</p>
+        <ul>
+          <li><strong>search_restaurants</strong>: Searches the tracked restaurants by name, cuisine, neighborhood, or booking platform. If you give a dining date, it also returns when reservations open for that date.</li>
+          <li><strong>get_reservation_opening</strong>: Calculates the exact date and time that reservations open for one restaurant and one dining date.</li>
+          <li><strong>render_reservation_options</strong>: Shows up to three restaurants in a card, with a "Book" or "Remind me" button on each row.</li>
+          <li><strong>prepare_reminder</strong>: Prepares the details for a reminder (restaurant, release time, and booking link). ChatGPT or Claude then creates the reminder with its own tools, if it has them.</li>
+        </ul>
+
+        <h3>Limits</h3>
+        <ul>
+          <li>The app covers only the restaurants we track (about 68 in New York City).</li>
+          <li>All times are Eastern Time.</li>
+          <li>Restaurants can change their reservation policies at any time. Check the booking page if timing is critical.</li>
+          <li>The app never books a table or takes payment.</li>
+        </ul>
+
+        <h3>Troubleshooting</h3>
+        <ul>
+          <li><strong>No results:</strong> Try the restaurant's name, or a broader cuisine or neighborhood. The restaurant may not be on our list.</li>
+          <li><strong>"Date in the past":</strong> The dining date has already passed. Give a future date. Include the year if the date could be ambiguous.</li>
+          <li><strong>A dialog appears when you click "Book":</strong> ChatGPT or Claude may ask you to confirm before it opens an external site. Confirm to open the booking page.</li>
+          <li><strong>"Remind me" does not create a reminder:</strong> Reminders depend on the host app. ChatGPT or Claude must have calendar or task tools turned on. If it does not, add the release time to your calendar yourself.</li>
+        </ul>
+
+        <h3>Data and Privacy</h3>
+        <p>The app has no sign-in. We do not receive your name, email address, or chat messages. We record each tool call (the tool name, its inputs, and technical details such as the host app and approximate location) to run and improve the app. We keep these records for up to 24 months. For details, see the <a href="privacy.html#app">Privacy Policy</a>. The <a href="tos.html">Terms of Service</a> also apply.</p>
+
+        <h3>Support</h3>
+        <p>For help, see the <a href="support.html">Support page</a> or email <a href="mailto:hi@nycrsvps.com">hi@nycrsvps.com</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:hi@nycrsvps.com">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="tos.html">Terms</a>
+        <a href="support.html">Support</a>
+        <a href="chatgpt-claude-app.html">ChatGPT &amp; Claude App</a>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
