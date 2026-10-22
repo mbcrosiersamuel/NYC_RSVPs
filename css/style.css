@@ -674,6 +674,11 @@ add-to-calendar-button {
   box-shadow: var(--shadow-sm);
 }
 
+.app-promo-mention {
+  color: var(--teal-700);
+  font-weight: 700;
+}
+
 .app-promo-card {
   width: calc(100% + 24px);
   margin-right: -24px;
