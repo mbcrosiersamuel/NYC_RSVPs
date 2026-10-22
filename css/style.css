@@ -622,18 +622,6 @@ add-to-calendar-button {
   text-decoration: none;
 }
 
-.app-promo-more,
-.app-promo-more:visited {
-  width: 100%;
-  text-align: right;
-  color: var(--teal-100);
-  font-size: 0.8rem;
-}
-
-.app-promo-more:hover {
-  color: var(--white);
-}
-
 .app-promo a:focus-visible {
   outline: 2px solid var(--white);
   outline-offset: 2px;
@@ -651,10 +639,6 @@ add-to-calendar-button {
   .app-promo-actions {
     justify-content: flex-start;
     max-width: none;
-  }
-
-  .app-promo-more {
-    text-align: left;
   }
 }
 
