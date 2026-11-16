@@ -4,6 +4,10 @@
       {
         "source": "/logo.svg",
         "destination": "/assets/icons/logo.svg"
+      },
+      {
+        "source": "/mcp",
+        "destination": "https://nyc-rsvps-mcp.vercel.app/mcp"
       }
     ],
     "headers": [
