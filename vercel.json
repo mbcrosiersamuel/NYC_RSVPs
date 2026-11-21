@@ -12,9 +12,22 @@
     {
       "source": "/.well-known/openai-apps-challenge",
       "destination": "https://nyc-rsvps-mcp.vercel.app/.well-known/openai-apps-challenge"
+    },
+    {
+      "source": "/events/dispatch",
+      "destination": "https://nyc-rsvps-mcp.vercel.app/events/dispatch"
     }
   ],
   "headers": [
+    {
+      "source": "/.well-known/muse-challenge/(.*)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
     {
       "source": "/js/(.*)",
       "headers": [
